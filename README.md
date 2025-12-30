@@ -133,3 +133,8 @@
 - jp_prefecture /都道府県管理
 - image_processing /画像処理
 - Geocoder /地点情報取得
+
+
+## 画面遷移図
+
+[figmaに移動して見る](https://www.figma.com/design/DvH3A0QvxvcuIEv5JcMKru/%E3%82%8F%E3%81%9F%E3%81%97%E3%81%AE%E6%8E%A8%E3%81%97%E7%9C%8C%F0%9F%97%BE?node-id=40-208&t=sJzWP2PcipVs7Wb4-0)
