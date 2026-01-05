@@ -138,3 +138,7 @@
 ## 画面遷移図
 
 [figmaに移動して見る](https://www.figma.com/design/DvH3A0QvxvcuIEv5JcMKru/%E3%82%8F%E3%81%9F%E3%81%97%E3%81%AE%E6%8E%A8%E3%81%97%E7%9C%8C%F0%9F%97%BE?node-id=40-208&t=sJzWP2PcipVs7Wb4-0)
+
+
+## ER図
+[![Image from Gyazo](https://i.gyazo.com/31bef5020f5300ebd67483872b8c9d32.png)](https://gyazo.com/31bef5020f5300ebd67483872b8c9d32)
