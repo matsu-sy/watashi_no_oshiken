@@ -1,0 +1,19 @@
+<header class="fixed top-0 inset-x-0 z-50 bg-[#FFFEF9] border-b border-[#5B5652]/40">
+  <div class="mx-auto max-w-6xl px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <%= link_to root_path, class: "inline-flex items-center" do %>
+        <%= image_tag "main_logo2.png",
+              alt: "わたしの推し県",
+              class: "h-10 w-auto" %>
+      <% end %>
+    </div>
+
+    <nav class="flex items-center gap-3">
+      <%= link_to "新規登録", "#",
+            class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-[#E7C9A9] text-[#5B5652] hover:opacity-90" %>
+
+      <%= link_to "ログイン", "#",
+            class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium border border-[#5B5652] text-[#5B5652] hover:bg-[#5B5652]/5" %>
+    </nav>
+  </div>
+</header>
