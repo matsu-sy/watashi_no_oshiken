@@ -10,7 +10,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['"Noto Sans JP"', ...defaultTheme.fontFamily.sans],
+        // 見出し用
+        display: ['"Zen Maru Gothic"', '"Noto Sans JP"', ...defaultTheme.fontFamily.sans],
       },
     },
   },

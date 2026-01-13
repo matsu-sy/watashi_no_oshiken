@@ -13,12 +13,17 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body class="m-0 min-h-screen pt-16 bg-gradient-to-b from-[#E9DFD2] via-white to-[#EEF3F0]">
+  <body class="m-0 min-h-screen pt-16 font-sans bg-gradient-to-b from-[#E9DFD2] via-white to-[#EEF3F0]">
     <%= render 'shared/header' %>
     <main>
       <%= yield %>
