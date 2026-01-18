@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: お名前
+        hometown_visibility: 出身地公開設定
+  enums:
+    user:
+      hometown_visibility:
+        hidden: 非公開
+        visible: 公開
