@@ -5,6 +5,7 @@ ja:
     attributes:
       user:
         name: お名前
+        email: メールアドレス
         hometown_visibility: 出身地公開設定
   enums:
     user:
