@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  prefecture_code: 1
+  category: one
+  body: MyText
+  place_name: MyString
+  google_place_id: MyString
+  latitude: 9.99
+  longitude: 9.99
+
+two:
+  user: two
+  prefecture_code: 1
+  category: two
+  body: MyText
+  place_name: MyString
+  google_place_id: MyString
+  latitude: 9.99
+  longitude: 9.99
