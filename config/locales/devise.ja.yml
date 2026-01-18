@@ -1,0 +1,4 @@
+ja:
+  errors:
+    messages:
+      too_short: "※%{count}文字以上"

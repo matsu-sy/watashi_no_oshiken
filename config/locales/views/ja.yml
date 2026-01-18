@@ -1,0 +1,22 @@
+ja:
+  devise:
+    registrations:
+      new:
+        title: 新規登録
+        submit: 登録
+        have_account: すでにアカウントをお持ちの方は
+    sessions:
+      new:
+        title: ログイン
+        submit: ログイン
+        forgot_password: パスワードをお忘れの方は
+        no_account: アカウントをお持ちでない方は
+  header:
+    sign_up: 新規登録
+    sign_in: ログイン
+    sign_out: ログアウト
+  footer:
+    terms_of_service: 利用規約
+    privacy_policy: プライバシーポリシー
+    contact: お問い合わせ
+    copyright: © 2026 わたしの推し県
