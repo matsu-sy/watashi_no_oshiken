@@ -6,4 +6,6 @@ class User < ApplicationRecord
   enum :hometown_visibility, { hidden: 0, visible: 1 }
 
   has_many :post, dependent: :destroy
+
+  validates :name, presence: true, length: { maximum: 30 }
 end

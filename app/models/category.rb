@@ -1,3 +1,5 @@
 class Category < ApplicationRecord
-  has_many :post, dependent: :restrict_with_error
+  has_many :posts, dependent: :restrict_with_error
+
+  validates :name, presence: true, uniqueness: true
 end
