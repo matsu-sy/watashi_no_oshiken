@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  get "posts/index"
   devise_for :users
+
+  authenticate :user do
+    root "posts#index", as: :authenticated_root
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,4 +18,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "static_pages#top"
+
+  resources :posts, only: %i[index]
 end
