@@ -12,7 +12,7 @@ class CreatePosts < ActiveRecord::Migration[7.2]
 
       t.timestamps
     end
-    
+
     add_index :posts, :prefecture_code
   end
 end
