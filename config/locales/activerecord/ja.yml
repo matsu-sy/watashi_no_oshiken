@@ -2,11 +2,20 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      category: カテゴリ
+      post: 投稿
     attributes:
       user:
         name: お名前
         email: メールアドレス
         hometown_visibility: 出身地公開設定
+      category:
+        name: カテゴリ名
+      post:
+        body: 本文
+        prefecture_code: 都道府県
+        category: カテゴリ
+        place_name: 場所名
   enums:
     user:
       hometown_visibility:
