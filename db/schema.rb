@@ -23,16 +23,17 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_18_212004) do
 
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "prefecture_code"
+    t.integer "prefecture_code", null: false
     t.bigint "category_id", null: false
-    t.text "body"
+    t.text "body", null: false
     t.string "place_name"
     t.string "google_place_id"
-    t.decimal "latitude"
-    t.decimal "longitude"
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["prefecture_code"], name: "index_posts_on_prefecture_code"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

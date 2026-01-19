@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum :hometown_visibility, { hidden: 0, visible: 1 }
+
+  has_many :post, dependent: :destroy
 end
