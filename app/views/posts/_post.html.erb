@@ -1,0 +1,55 @@
+<article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+  <!-- 県 / カテゴリ -->
+  <div class="flex items-center justify-between bg-[#92B099] px-5 py-2 text-base text-white">
+    <div class="flex items-center gap-2">
+      <span class="font-semibold"><%= post.prefecture_name %></span>
+      <span class="mx-2 text-base text-white/90">の</span>
+      <span class="font-semibold"><%= post.category.name %></span>
+    </div>
+  </div>
+
+  <div class="flex flex-1 flex-col gap-3 p-5">
+    <!-- ユーザー -->
+    <div class="flex items-center gap-3">
+      <!-- アイコン（仮） -->
+      <div class="h-12 w-12 rounded-full bg-slate-200"></div>
+
+      <div class="min-w-0">
+        <p class="truncate text-sm font-semibold text-slate-700">
+          <%= post.user.name %>
+        </p>
+        <p class="text-xs text-slate-500">
+          <%= post.place_name.presence || "" %>
+        </p>
+      </div>
+    </div>
+
+    <!-- 本文 -->
+    <p class="text-base leading-relaxed text-slate-700 line-clamp-3">
+      <%= post.body %>
+    </p>
+
+    <!-- 写真（仮） -->
+    <div class="mt-auto auto h-20 overflow-hidden rounded-xl bg-slate-100">
+      <div class="flex h-full items-center justify-center text-xs text-slate-400">
+        写真
+      </div>
+    </div>
+
+    <!-- リアクション（仮） -->
+    <div class="mt-4 flex items-center justify-between">
+      <div class="flex gap-2">
+        <button class="rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 hover:bg-slate-50">
+          👀
+        </button>
+        <button class="rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 hover:bg-slate-50">
+          ❤
+        </button>
+        <button class="rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 hover:bg-slate-50">
+          📍
+        </button>
+      </div>
+      <span class="text-xs text-slate-500"><%= post.created_at.strftime("%m/%d %H:%M") %></span>
+    </div>
+  </div>
+</article>
