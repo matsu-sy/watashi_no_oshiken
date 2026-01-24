@@ -10,6 +10,8 @@
 
     <nav class="flex items-center gap-3">
       <% if user_signed_in? %>
+        <%= link_to t('header.create_post'), new_post_path,
+              class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-[#92B099] text-white hover:opacity-90" %>
         <%= button_to t('header.sign_out'),
               destroy_user_session_path,
               method: :delete,
