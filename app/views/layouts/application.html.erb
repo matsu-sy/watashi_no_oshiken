@@ -23,11 +23,21 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body class="m-0 min-h-screen pt-16 font-sans bg-gradient-to-b from-[#E9DFD2] via-white to-[#EEF3F0]">
+  <body class="m-0 min-h-screen pt-16 font-sans bg-gradient-to-b from-[#FFFEF9] via-white to-[#EEF3F0]">
     <%= render 'shared/header' %>
+
+    <%# ページタイトル帯（ページ側から content_for で渡す） %>
+    <% if content_for?(:page_title) %>
+      <%= render "shared/page_header", title: yield(:page_title), subtitle: content_for?(:page_subtitle) ? yield(:page_subtitle) : nil %>
+    <% end %>
+
     <main>
-      <%= yield %>
+      <%= render "shared/page_container" do %>
+        <%= render 'shared/flash_message' %>
+        <%= yield %>
+      <% end %>
     </main>
+
     <%= render 'shared/footer' %>
   </body>
 </html>

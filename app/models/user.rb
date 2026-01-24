@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   enum :hometown_visibility, { hidden: 0, visible: 1 }
 
-  has_many :post, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }
 end
