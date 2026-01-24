@@ -3,7 +3,7 @@
   <% if post.errors.any? %>
     <div class="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3">
       <p class="text-sm font-medium text-rose-800">
-        入力内容をご確認ください（<%= post.errors.count %>件）
+        <%= t("posts.form.errors_title", count: post.errors.count) %>
       </p>
       <ul class="mt-2 list-disc pl-5 text-sm text-rose-700 space-y-1">
         <% order = [:prefecture_code, :category, :body, :place_name] %>
@@ -16,66 +16,69 @@
     </div>
   <% end %>
 
-  <%# ラベル＋入力のブロック %>
+  <%# 都道府県 %>
   <div class="space-y-1">
     <%= f.label :prefecture_code, class: "block text-sm font-medium text-[#5B5652]" do %>
-      都道府県
-      <span class="ml-1 text-xs font-semibold text-[#92B099]">*</span>
+      <%= Post.human_attribute_name(:prefecture_code) %>
+      <span class="ml-1 text-xs font-semibold text-[#92B099]"><%= t("posts.form.required_mark") %></span>
     <% end %>
     <%= f.collection_select :prefecture_code,
         JpPrefecture::Prefecture.all, :code, :name,
-        { prompt: "選択してください" },
+        { prompt: t("posts.form.prefecture_prompt") },
         class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
-    <p class="text-xs text-slate-500">※あなたの出身県以外の「推し県」を選んでください</p>
+    <p class="text-xs text-slate-500"><%= t("posts.form.prefecture_help") %></p>
   </div>
 
+  <%# カテゴリ %>
   <div class="space-y-1">
     <%= f.label :category_id, class: "block text-sm font-medium text-[#5B5652]" do %>
-      カテゴリ
-      <span class="ml-1 text-xs font-semibold text-[#92B099]">*</span>
+      <%= Post.human_attribute_name(:category) %>
+      <span class="ml-1 text-xs font-semibold text-[#92B099]"><%= t("posts.form.required_mark") %></span>
     <% end %>
     <%= f.collection_select :category_id,
           Category.order(:name), :id, :name,
-          { prompt: "選択してください" },
+          { prompt: t("posts.form.category_prompt") },
           class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
   </div>
 
+  <%# コメント（本文） %>
   <div class="space-y-1">
     <%= f.label :body, class: "block text-sm font-medium text-[#5B5652]" do %>
-      コメント
-      <span class="ml-1 text-xs font-semibold text-[#92B099]">*</span>
+      <%= Post.human_attribute_name(:body) %>
+      <span class="ml-1 text-xs font-semibold text-[#92B099]"><%= t("posts.form.required_mark") %></span>
     <% end %>
     <%= f.text_area :body,
           rows: 6,
-          placeholder: "例：駅前の定食屋さんが安くて美味しかった。地元の人が優しかった…など",
+          placeholder: t("posts.form.body_placeholder"),
           class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
   </div>
 
+  <%# 画像 %>
   <div class="space-y-1">
-    <%= f.label :image, "画像", class: "block text-sm font-medium text-[#5B5652]" %>
+    <%= f.label :image, t("posts.form.image_label"), class: "block text-sm font-medium text-[#5B5652]" %>
     <%= f.file_field :image,
           accept: "image/*",
           class: "block w-full text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-[#92B099]/40 file:px-4 file:py-2 file:text-sm file:font-medium file:text-[#5B5652] hover:file:bg-[#92B099]/55" %>
   </div>
 
-  <%# Google PlaceはMVP後 %>
+  <%# 場所名 Google PlaceはMVP後 %>
   <div class="space-y-1">
-    <%= f.label :place_name, "場所", class: "block text-sm font-medium text-[#5B5652]" %>
+    <%= f.label :place_name, t("posts.form.place_label"), class: "block text-sm font-medium text-[#5B5652]" %>
     <%= f.text_field :place_name,
-          placeholder: "例：ひたち海浜公園 / ○○駅周辺 / △△温泉 など",
+          placeholder: t("posts.form.place_placeholder"),
           class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
   </div>
 
   <%# ボタン %>
   <div class="pt-4 text-center space-y-3">
-    <%= f.submit "投稿する",
+    <%= f.submit t("posts.form.submit"),
           class: "inline-flex items-center justify-center rounded-lg
                 bg-[#92B099] px-8 py-3 text-base leading-none font-semibold text-white
                 shadow-sm hover:bg-[#84A88F]
                 focus:outline-none focus:ring-2 focus:ring-[#92B099]/50" %>
 
     <div>
-      <%= link_to "戻る", posts_path,
+      <%= link_to t("posts.form.back"), posts_path,
             class: "text-sm text-slate-600 hover:text-slate-800
                   underline underline-offset-4" %>
     </div>

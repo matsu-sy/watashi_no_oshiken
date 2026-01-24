@@ -11,6 +11,19 @@ ja:
         submit: ログイン
         forgot_password: パスワードをお忘れの方は
         no_account: アカウントをお持ちでない方は
+  posts:
+    form:
+      errors_title: "入力内容をご確認ください（%{count}件）"
+      required_mark: "*"
+      prefecture_help: "※あなたの出身県以外の「推し県」を選んでください"
+      prefecture_prompt: 選択してください
+      category_prompt: 選択してください
+      body_placeholder: "例：駅前の定食屋さんが安くて美味しかった。地元の人が優しかった…など"
+      image_label: 画像
+      place_label: 場所名
+      place_placeholder: "例：ひたち海浜公園 / ○○駅周辺 / △△温泉 など"
+      submit: 投稿する
+      back: 戻る
   header:
     sign_up: 新規登録
     sign_in: ログイン
