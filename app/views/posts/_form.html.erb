@@ -1,0 +1,81 @@
+<%= form_with model: post, class: "space-y-6" do |f| %>
+  <%# エラーメッセージ（最低限で見た目も崩さない） %>
+  <% if post.errors.any? %>
+    <div class="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3">
+      <p class="text-sm font-medium text-rose-800">
+        入力内容をご確認ください（<%= post.errors.count %>件）
+      </p>
+      <ul class="mt-2 list-disc pl-5 text-sm text-rose-700 space-y-1">
+        <% post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# 共通：ラベル＋入力のブロック %>
+  <div class="space-y-1">
+    <%= f.label :prefecture_code, class: "block text-sm font-medium text-[#5B5652]" do %>
+      都道府県
+      <span class="ml-1 text-xs font-semibold text-[#92B099]">*</span>
+    <% end %>
+    <%= f.collection_select :prefecture_code,
+        JpPrefecture::Prefecture.all, :code, :name,
+        { prompt: "選択してください" },
+        class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
+    <p class="text-xs text-slate-500">※あなたの出身県以外の「推し県」を選んでください</p>
+  </div>
+
+  <div class="space-y-1">
+    <%= f.label :category_id, class: "block text-sm font-medium text-[#5B5652]" do %>
+      カテゴリ
+      <span class="ml-1 text-xs font-semibold text-[#92B099]">*</span>
+    <% end %>
+    <%= f.collection_select :category_id,
+          Category.order(:name), :id, :name,
+          { prompt: "選択してください" },
+          class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
+  </div>
+
+  <div class="space-y-1">
+    <%= f.label :content, class: "block text-sm font-medium text-[#5B5652]" do %>
+      コメント
+      <span class="ml-1 text-xs font-semibold text-[#92B099]">*</span>
+    <% end %>
+    <%= f.text_area :content,
+          rows: 6,
+          placeholder: "例：駅前の定食屋さんが安くて美味しかった。地元の人が優しかった…など",
+          class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
+  </div>
+
+  <%# 画像（Active Storage想定） %>
+  <div class="space-y-1">
+    <%= f.label :image, "画像", class: "block text-sm font-medium text-[#5B5652]" %>
+    <%= f.file_field :image,
+          accept: "image/*",
+          class: "block w-full text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-[#92B099]/40 file:px-4 file:py-2 file:text-sm file:font-medium file:text-[#5B5652] hover:file:bg-[#92B099]/55" %>
+  </div>
+
+  <%# 場所（Google Place等は後で。今はテキストで十分） %>
+  <div class="space-y-1">
+    <%= f.label :place, "場所", class: "block text-sm font-medium text-[#5B5652]" %>
+    <%= f.text_field :place,
+          placeholder: "例：ひたち海浜公園 / ○○駅周辺 / △△温泉 など",
+          class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
+  </div>
+
+  <%# ボタン %>
+  <div class="pt-4 text-center space-y-3">
+    <%= f.submit "投稿する",
+          class: "inline-flex items-center justify-center rounded-lg
+                bg-[#92B099] px-8 py-3 text-base leading-none font-semibold text-white
+                shadow-sm hover:bg-[#84A88F]
+                focus:outline-none focus:ring-2 focus:ring-[#92B099]/50" %>
+
+    <div>
+      <%= link_to "戻る", posts_path,
+            class: "text-sm text-slate-600 hover:text-slate-800
+                  underline underline-offset-4" %>
+    </div>
+  </div>
+<% end %>
