@@ -33,6 +33,7 @@
 
     <main>
       <%= render "shared/page_container" do %>
+        <%= render 'shared/flash_message' %>
         <%= yield %>
       <% end %>
     </main>

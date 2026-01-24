@@ -1,4 +1,9 @@
 ja:
+  flash_message:
+    posts:
+      create:
+        success: "投稿しました"
+        failure: "投稿できませんでした"
   devise:
     registrations:
       new:
