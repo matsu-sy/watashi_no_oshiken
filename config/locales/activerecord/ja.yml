@@ -12,7 +12,7 @@ ja:
       category:
         name: カテゴリ名
       post:
-        body: 本文
+        body: コメント
         prefecture_code: 都道府県
         category: カテゴリ
         place_name: 場所名

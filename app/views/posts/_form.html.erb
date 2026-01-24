@@ -6,8 +6,11 @@
         入力内容をご確認ください（<%= post.errors.count %>件）
       </p>
       <ul class="mt-2 list-disc pl-5 text-sm text-rose-700 space-y-1">
-        <% post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+        <% order = [:prefecture_code, :category, :body, :place_name] %>
+        <% order.each do |attr| %>
+          <% post.errors.full_messages_for(attr).each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>
@@ -57,8 +60,8 @@
 
   <%# Google PlaceはMVP後 %>
   <div class="space-y-1">
-    <%= f.label :place, "場所", class: "block text-sm font-medium text-[#5B5652]" %>
-    <%= f.text_field :place,
+    <%= f.label :place_name, "場所", class: "block text-sm font-medium text-[#5B5652]" %>
+    <%= f.text_field :place_name,
           placeholder: "例：ひたち海浜公園 / ○○駅周辺 / △△温泉 など",
           class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
   </div>
