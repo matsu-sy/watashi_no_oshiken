@@ -1,12 +1,11 @@
 <% content_for :page_title, t("posts.index.title") %>
 
-  <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    <% if @posts.present? %>
-      <%= render @posts %>
-    <% else %>
-      <p class="col-span-full mt-12 text-center text-sm text-slate-500">
-        まだ投稿がありません。
-      </p>
-    <% end %>
-  </div>
+<div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <% if @posts.present? %>
+    <%= render @posts %>
+  <% else %>
+    <p class="col-span-full mt-12 text-center text-sm text-slate-500">
+      まだ投稿がありません。
+    </p>
+  <% end %>
 </div>

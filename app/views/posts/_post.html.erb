@@ -1,12 +1,18 @@
-<article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-  <!-- 県 / カテゴリ -->
-  <div class="flex items-center justify-between bg-[#92B099] px-5 py-2 text-base text-white">
-    <div class="flex items-center gap-2">
-      <span class="font-semibold"><%= post.prefecture_name %></span>
-      <span class="mx-2 text-base text-white/90">の</span>
-      <span class="font-semibold"><%= post.category.name %></span>
+<article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition
+                hover:border-slate-300 hover:shadow hover:-translate-y-1">
+
+  <!-- 県 / カテゴリ (詳細画面へリンク) -->
+  <%= link_to post_path(post), class: "block" do %>
+    <div class="flex items-center justify-between bg-[#92B099] px-5 py-2 text-base text-white transition hover:bg-[#86A78D]">
+      <div class="flex items-center gap-2">
+        <span class="font-semibold"><%= post.prefecture_name %></span>
+        <span class="mx-2 text-base text-white/90">の</span>
+        <span class="font-semibold"><%= post.category.name %></span>
+      </div>
+
+      <span class="text-lg text-white transition group-hover:text-white" aria-hidden="true">›</span>
     </div>
-  </div>
+  <% end %>
 
   <div class="flex flex-1 flex-col gap-3 p-5">
     <!-- ユーザー -->
@@ -25,9 +31,9 @@
     </div>
 
     <!-- 本文 -->
-    <p class="text-base leading-relaxed text-slate-700 line-clamp-3">
-      <%= post.body %>
-    </p>
+      <p class="text-base leading-relaxed text-slate-700 line-clamp-3">
+        <%= post.body %>
+      </p>
 
     <!-- 写真（仮） -->
     <div class="mt-auto auto h-20 overflow-hidden rounded-xl bg-slate-100">
