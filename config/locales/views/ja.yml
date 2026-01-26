@@ -1,9 +1,16 @@
 ja:
+  helpers:
+    submit:
+      create: 投稿する
+      update: 更新する
   flash_message:
     posts:
       create:
         success: "投稿しました"
         failure: "投稿できませんでした"
+      update:
+        success: "更新しました"
+        failure: "更新できませんでした"
   devise:
     registrations:
       new:
@@ -23,6 +30,8 @@ ja:
       title: 投稿一覧
     show:
       title: 投稿詳細
+    edit:
+      title: 編集
     form:
       errors_title: "入力内容をご確認ください（%{count}件）"
       required_mark: "*"
@@ -33,7 +42,6 @@ ja:
       image_label: 画像
       place_label: 場所名
       place_placeholder: "例：ひたち海浜公園 / ○○駅周辺 / △△温泉 など"
-      submit: 投稿する
       back: 戻る
   header:
     sign_up: 新規登録

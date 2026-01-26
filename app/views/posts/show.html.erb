@@ -12,11 +12,16 @@
   <!-- 投稿詳細 -->
   <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
     <!-- 県 / カテゴリ -->
-    <div class="flex items-center justify-between bg-[#92B099] px-5 py-3 text-base text-white">
+    <div class="flex w-full items-center bg-[#92B099] px-5 py-3 text-base text-white">
       <div class="flex items-center gap-2">
         <span class="font-semibold"><%= @post.prefecture_name %></span>
         <span class="mx-2 text-base text-white/90">の</span>
         <span class="font-semibold"><%= @post.category.name %></span>
+        <!-- 編集 -->
+        <% if current_user.own?(@post) %>
+          <%= link_to "✐", edit_post_path(@post),
+                class: "rounded-full px-3 py-1 text-base text-white hover:bg-white/30" %>
+        <% end %>
       </div>
     </div>
 
