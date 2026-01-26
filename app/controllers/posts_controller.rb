@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path(@post), notice: t("flash_message.posts.update.success", item: Post.model_name.human)
-      else
+    else
       flash.now[:alert] = t("flash_message.posts.update.failure")
       render :edit, status: :unprocessable_entity
     end
