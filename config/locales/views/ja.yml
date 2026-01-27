@@ -11,6 +11,9 @@ ja:
       update:
         success: "更新しました"
         failure: "更新できませんでした"
+      deleted:
+        success: "削除しました"
+        failure: "削除できませんでした"
   devise:
     registrations:
       new:
