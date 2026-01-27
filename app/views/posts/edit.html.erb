@@ -1,10 +1,59 @@
 <% content_for :page_title, t("posts.edit.title") %>
 
 <div class="mx-auto max-w-xl">
-  <div class="rounded-2xl bg-white/80 shadow-[0_18px_35px_rgba(0,0,0,0.08)] ring-1 ring-black/5 p-6 sm:p-8">
+  <div
+    class="rounded-2xl bg-white/80 shadow-[0_18px_35px_rgba(0,0,0,0.08)] ring-1 ring-black/5 p-6 sm:p-8"
+    data-controller="confirm-modal"
+  >
+
+    <!-- 削除ボタン -->
+    <div class="flex items-center justify-end">
+      <button type="button"
+        data-action="click->confirm-modal#open"
+        class="inline-flex items-center gap-2 rounded-lg border border-rose-300 bg-white px-3 py-2 text-sm font-medium text-rose-700 shadow-sm hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-200">
+
+        <!-- ゴミ箱アイコン -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 16h10l1-16"/><path d="M10 11v6"/><path d="M14 11v6"/>
+        </svg>
+
+        <span>削除</span>
+      </button>
+    </div>
 
     <div class="mt-6">
       <%= render "form", post: @post %>
     </div>
+
+    <!-- モーダル -->
+    <div data-confirm-modal-target="overlay"
+         class="fixed inset-0 z-50 hidden items-center justify-center bg-black/30 p-4">
+
+      <div class="absolute inset-0" data-action="click->confirm-modal#close"></div>
+
+      <div class="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl text-center">
+        <h2 class="text-base font-semibold text-slate-800">
+          投稿を削除してよろしいですか？
+        </h2>
+
+        <p class="mt-2 text-sm text-slate-600">
+          一度削除すると元に戻せません。
+        </p>
+
+        <div class="mt-6 flex justify-center gap-4">
+          <button type="button"
+            data-action="click->confirm-modal#close"
+            class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+            キャンセル
+          </button>
+
+          <%= link_to "削除する",
+                post_path(@post),
+                data: { turbo_method: :delete },
+                class: "rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700" %>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
