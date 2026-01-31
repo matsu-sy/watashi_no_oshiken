@@ -11,7 +11,7 @@
     <nav class="flex items-center gap-3">
       <% if user_signed_in? %>
         <%= link_to t('header.create_post'), new_post_path,
-              class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-[#92B099] text-white hover:opacity-90" %>
+              class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-[#92B099] text-white hover:bg-[#86A78D]" %>
         <%= button_to t('header.sign_out'),
               destroy_user_session_path,
               method: :delete,
@@ -19,7 +19,7 @@
               class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium border border-[#5B5652] text-[#5B5652] hover:bg-[#5B5652]/5" %>
       <% else %>
         <%= link_to t('header.sign_up'), new_user_registration_path,
-              class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-[#E7C9A9] text-[#5B5652] hover:opacity-90" %>
+              class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-[#92B099] text-white hover:bg-[#86A78D]" %>
 
         <%= link_to t('header.sign_in'), new_user_session_path,
               class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium border border-[#5B5652] text-[#5B5652] hover:bg-[#5B5652]/5" %>
