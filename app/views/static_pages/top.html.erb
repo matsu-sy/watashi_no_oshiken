@@ -11,7 +11,12 @@
           text-[#5F7F69]
           tracking-wide leading-relaxed
           [-webkit-text-stroke:1px_rgba(91,86,82,0.25)]">
-      あなたの県の“隠れた良さ”、他県民は気づいてます！
+      <%= t('top.catch_copy') %>
     </p>
   </div>
+  <div class="pt-4 text-center space-y-3">
+    <%= link_to t('top.browse_posts'), posts_path,
+        class: "inline-flex items-center rounded-full px-7 py-2 text-lg font-medium bg-[#92B099] text-white hover:bg-[#86A78D]" %>
+  </div>
+
 </main>
