@@ -1,18 +1,33 @@
-<article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition
-                hover:border-slate-300 hover:shadow hover:-translate-y-1">
+<article
+  class="relative group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition
+         hover:border-slate-300 hover:shadow hover:-translate-y-1">
 
-  <!-- 県 / カテゴリ (詳細画面へリンク) -->
-  <%= link_to post_path(post), class: "block" do %>
-    <div class="flex items-center justify-between bg-[#92B099] px-5 py-2 text-base text-white transition hover:bg-[#86A78D]">
-      <div class="flex items-center gap-2">
-        <span class="font-semibold"><%= post.prefecture_name %></span>
-        <span class="mx-2 text-base text-white/90">の</span>
-        <span class="font-semibold"><%= post.category.name %></span>
+  <div class="relative">
+    <% unless user_signed_in? %>
+      <!-- カード全体ホバーで表示 -->
+      <div class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full z-20 mt-2
+                  opacity-0 transition-opacity
+                  group-hover:opacity-100">
+        <div class="relative rounded-md bg-slate-900/90 px-3 py-1.5 text-xs text-white shadow">
+          <%= t("posts.index.login_required_tooltip") %>
+          <!-- ヘッダーに向く三角 -->
+          <span class="absolute -top-1 left-10 h-2 w-2 rotate-45 bg-slate-900/90"></span>
+        </div>
       </div>
+    <% end %>
 
-      <span class="text-lg text-white transition group-hover:text-white" aria-hidden="true">›</span>
-    </div>
-  <% end %>
+    <!-- 県 / カテゴリ (詳細画面へリンク) -->
+    <%= link_to post_path(post), class: "block relative z-0" do %>
+      <div class="flex items-center justify-between bg-[#92B099] px-5 py-2 text-base text-white transition hover:bg-[#86A78D]">
+        <div class="flex items-center gap-2">
+          <span class="font-semibold"><%= post.prefecture_name %></span>
+          <span class="mx-2 text-base text-white/90">の</span>
+          <span class="font-semibold"><%= post.category.name %></span>
+        </div>
+        <span class="text-lg text-white" aria-hidden="true">›</span>
+      </div>
+    <% end %>
+  </div>
 
   <div class="flex flex-1 flex-col gap-3 p-5">
     <!-- ユーザー -->
