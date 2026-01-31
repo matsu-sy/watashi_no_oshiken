@@ -30,6 +30,7 @@ ja:
       title: 投稿
     index:
       title: 投稿一覧
+      login_required_tooltip: "ログインして詳細を見る"
     show:
       title: 投稿詳細
     edit:
