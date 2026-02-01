@@ -1,19 +1,25 @@
+<% reacted = user_signed_in? && current_user.reacted_to?(post, reaction_type) %>
+
 <% base = "inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm transition" %>
-<% normal = "border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-[#92B099]" %>
+<% normal = "border-slate-200 text-slate-600 hover:bg-slate-50" %>
+<% active = "border-slate-300 text-slate-800 bg-white ring-2 ring-[#92B099]" %>
 <% disabled = "border-slate-200 text-slate-400 bg-slate-50 cursor-not-allowed" %>
+
+<% content = capture do %>
+  <span class="inline-flex items-center">
+    <%= yield %>
+  </span>
+  <span class="text-xs text-slate-500"><%= post.reaction_count(reaction_type) %></span>
+<% end %>
 
 <% if user_signed_in? %>
   <%= button_to post_reactions_path(post, reaction_type: reaction_type),
-      method: :post,
-      class: "#{base} #{normal}" do %>
-    <span class="inline-flex items-center">
-      <%= yield %>
-    </span>
+      method: (reacted ? :delete : :post),
+      class: "#{base} #{reacted ? active : normal}" do %>
+    <%= content %>
   <% end %>
 <% else %>
   <button type="button" class="<%= "#{base} #{disabled}" %>" disabled>
-    <span class="inline-flex items-center">
-      <%= yield %>
-    </span>
+    <%= content %>
   </button>
 <% end %>

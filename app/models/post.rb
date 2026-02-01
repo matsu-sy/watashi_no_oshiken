@@ -21,4 +21,8 @@ class Post < ApplicationRecord
   def prefecture_name
     prefecture&.name
   end
+
+  def reaction_count(reaction_type)
+    reactions.count { |r| r.reaction_type == reaction_type.to_s }
+  end
 end
