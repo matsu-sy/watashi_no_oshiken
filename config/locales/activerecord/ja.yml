@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       category: カテゴリ
       post: 投稿
+      reaction: リアクション
     attributes:
       user:
         name: お名前
@@ -14,10 +15,17 @@ ja:
       post:
         body: コメント
         prefecture_code: 都道府県
-        category: カテゴリ
+        category_id: カテゴリ
         place_name: 場所名
+      reaction:
+        reaction_type: リアクション
   enums:
     user:
       hometown_visibility:
         hidden: 非公開
         visible: 公開
+    reaction:
+      reaction_type:
+        unknown: 知らなかった
+        like: いいね
+        wantgo: 行ってみたい
