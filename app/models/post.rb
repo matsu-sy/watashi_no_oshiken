@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+  has_many :reactions, dependent: :destroy
+  has_many :reacting_users, through: :reactions, source: :user
+
   jp_prefecture :prefecture_code
 
   validates :body, presence: true, length: { maximum: 280 }
