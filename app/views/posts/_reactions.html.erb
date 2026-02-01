@@ -1,0 +1,28 @@
+<div class="flex gap-2">
+  <!-- 知らなかった：lightbulb -->
+  <%= render "posts/reaction_button", post: post, reaction_type: :unknown do %>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+         class="reaction-icon" aria-hidden="true">
+      <path d="M9 18h6"/>
+      <path d="M10 22h4"/>
+      <path d="M12 2a7 7 0 0 0-4 12c.7.6 1 1.4 1 2h6c0-.6.3-1.4 1-2A7 7 0 0 0 12 2z"/>
+    </svg>
+  <% end %>
+
+  <!-- いいね：heart -->
+  <%= render "posts/reaction_button", post: post, reaction_type: :like do %>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+         class="reaction-icon" aria-hidden="true">
+      <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/>
+    </svg>
+  <% end %>
+
+  <!-- 行ってみたい：map pin -->
+  <%= render "posts/reaction_button", post: post, reaction_type: :wantgo do %>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+         class="reaction-icon" aria-hidden="true">
+      <path d="M12 21c-4.5-4.3-7-7.5-7-11a7 7 0 1 1 14 0c0 3.5-2.5 6.7-7 11z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </svg>
+  <% end %>
+</div>
