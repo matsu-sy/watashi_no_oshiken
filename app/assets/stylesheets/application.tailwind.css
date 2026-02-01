@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.reaction-icon {
+  @apply h-4 w-4 stroke-current fill-none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 /*
 
 @layer components {

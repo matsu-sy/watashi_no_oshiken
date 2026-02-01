@@ -1,0 +1,19 @@
+<% base = "inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm transition" %>
+<% normal = "border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-[#92B099]" %>
+<% disabled = "border-slate-200 text-slate-400 bg-slate-50 cursor-not-allowed" %>
+
+<% if user_signed_in? %>
+  <%= button_to post_reactions_path(post, reaction_type: reaction_type),
+      method: :post,
+      class: "#{base} #{normal}" do %>
+    <span class="inline-flex items-center">
+      <%= yield %>
+    </span>
+  <% end %>
+<% else %>
+  <button type="button" class="<%= "#{base} #{disabled}" %>" disabled>
+    <span class="inline-flex items-center">
+      <%= yield %>
+    </span>
+  </button>
+<% end %>
