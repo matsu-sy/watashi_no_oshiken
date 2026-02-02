@@ -1,10 +1,14 @@
 ja:
   activerecord:
+    errors:
+      messages:
+        limit_three: "は最大3つまでしか登録できません"
     models:
       user: ユーザー
       category: カテゴリ
       post: 投稿
       reaction: リアクション
+      hometown: 出身地
     attributes:
       user:
         name: お名前
@@ -19,6 +23,8 @@ ja:
         place_name: 場所名
       reaction:
         reaction_type: リアクション
+      hometown:
+        prefecture_code: 都道府県
   enums:
     user:
       hometown_visibility:

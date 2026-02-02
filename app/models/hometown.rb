@@ -7,8 +7,8 @@ class Hometown < ApplicationRecord
   
   def limit_three_per_user
     return unless user
-    if user.hometowns.count > = 3
-      errors.add(:prefecture_code, "は最大3つまでしか登録できません")
+    if user.hometowns.count >= 3
+      errors.add(:prefecture_code, :limit_three)
     end
   end
 end
