@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root "posts#index", as: :authenticated_root
+    get "mypage", to: "mypages#show", as: :mypage
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
