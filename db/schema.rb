@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_01_020828) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_02_203548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,15 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_01_020828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "hometowns", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "prefecture_code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "prefecture_code"], name: "index_hometowns_on_user_id_and_prefecture_code", unique: true
+    t.index ["user_id"], name: "index_hometowns_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -64,6 +73,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_01_020828) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "hometowns", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
   add_foreign_key "reactions", "posts"
