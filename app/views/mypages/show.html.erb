@@ -1,4 +1,81 @@
-<div>
-  <h1 class="font-bold text-4xl">Mypages#show</h1>
-  <p>Find me in app/views/mypages/show.html.erb</p>
+<% content_for :page_title, "マイページ" %>
+
+<div class="mx-auto w-full max-w-2xl px-4 pb-10 sm:pb-12">
+  <!-- プロフィールカード -->
+  <section class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <!-- カードヘッダー：プロフィール + 編集 -->
+    <div class="flex items-center justify-between px-6 py-6 sm:px-8 sm:pt-8">
+      <h2 class="text-base font-semibold text-[#5B5652]">プロフィール</h2>
+
+      <%= link_to "#",
+        class: "inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.8" stroke="currentColor" class="h-4 w-4 text-slate-600">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M16.862 4.487 19.5 7.125m-2.638-2.638L7.5 13.85V16.5h2.65l9.712-9.375ZM6 20.25h12.75" />
+        </svg>
+      <% end %>
+    </div>
+
+    <div class="px-8 pb-8 sm:px-10 sm:pb-10">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-[120px,1fr] sm:gap-8">
+        <!-- 左：画像 -->
+        <div class="flex items-start justify-center">
+          <div class="h-20 w-20 rounded-full bg-slate-100 ring-2 ring-[#92B099]/30 flex items-center justify-center">
+            <span class="text-xs text-slate-400">画像</span>
+          </div>
+        </div>
+
+        <!-- 右：情報 -->
+        <div class="space-y-4">
+          <!-- 名前 -->
+          <div class="rounded-2xl bg-slate-50 px-3 py-4 ring-1 ring-black/5">
+            <div class="grid grid-cols-[100px,1fr] items-start gap-4">
+              <div class="h-8 flex items-center justify-center">
+                <p class="text-xs font-medium text-slate-500">お名前</p>
+              </div> 
+                <p class="text-lg sm:text-xl font-semibold text-slate-800">
+                  <%= @user.name %>
+                </p>
+            </div>
+          </div>
+
+          <!-- 出身地 -->
+          <div class="rounded-2xl bg-slate-50 px-3 py-4 ring-1 ring-black/5">
+            <div class="grid grid-cols-[100px,1fr] items-start gap-4">
+              <div class="flex flex-col gap-2">
+                <!-- 出身地 -->
+                <div class="h-8 flex items-center justify-center">
+                  <p class="text-xs font-medium text-slate-500">出身地</p>
+                </div>
+
+                <!-- 公開設定 -->
+                <div class="h-8 flex items-center justify-center">
+                  <span class="inline-flex items-center justify-center rounded-full border px-2.5 py-1 text-xs font-medium whitespace-nowrap
+                              <%= @user.visible? ? 'border-[#92B099]/40 text-[#5F7F69] bg-[#92B099]/10' : 'border-slate-200 text-slate-500 bg-white' %>">
+                    <%= @user.visible? ? "公開" : "非公開" %>
+                  </span>
+                </div>
+              </div>
+
+              <!-- 出身県 -->
+              <div class="min-h-[72px] flex flex-wrap items-center gap-2">
+                <% hometowns = @hometowns.order(:created_at).limit(3) %>
+
+                <% if hometowns.present? %>
+                  <% hometowns.each do |h| %>
+                    <span class="inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200">
+                      <%= h.respond_to?(:prefecture_name) ? h.prefecture_name : h.to_s %>
+                    </span>
+                  <% end %>
+                <% else %>
+                  <span class="text-sm text-slate-500">登録がありません</span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
