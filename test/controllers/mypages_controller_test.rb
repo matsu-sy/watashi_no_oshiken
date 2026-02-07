@@ -1,8 +1,13 @@
 require "test_helper"
 
 class MypagesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   test "should get show" do
-    get mypages_show_url
+    user = users(:one) # fixtures に one がある前提
+    sign_in user
+
+    get mypage_url
     assert_response :success
   end
 end
