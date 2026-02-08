@@ -84,7 +84,7 @@
 <div class="mx-auto w-full max-w-5xl px-4 pb-12">
   <section class="mt-10">
     <h2 class="pb-6 text-base font-semibold text-[#5B5652] text-center">
-      リアクションした投稿
+      <%= t(".reacted_posts") %>
     </h2>
 
     <% if @reacted_posts.present? %>
@@ -93,7 +93,7 @@
       </div>
     <% else %>
       <p class="text-sm text-slate-500 text-center">
-        まだリアクションした投稿がありません
+        <%= t(".reacted_posts_empty") %>
       </p>
     <% end %>
   </section>
