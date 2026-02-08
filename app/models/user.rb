@@ -17,6 +17,6 @@ class User < ApplicationRecord
   end
 
   def reacted_to?(post, reaction_type)
-    reactions.any? { |r| r.post_id == post.id && r.reaction_type == reaction_type.to_s }
+    reactions.exists?(post_id: post.id, reaction_type: reaction_type.to_s)
   end
 end

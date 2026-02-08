@@ -19,7 +19,7 @@ ja:
       post:
         body: コメント
         prefecture_code: 都道府県
-        category_id: カテゴリ
+        category: カテゴリ
         place_name: 場所名
       reaction:
         reaction_type: リアクション

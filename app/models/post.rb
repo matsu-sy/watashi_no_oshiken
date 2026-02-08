@@ -23,6 +23,12 @@ class Post < ApplicationRecord
   end
 
   def reaction_count(reaction_type)
-    reactions.count { |r| r.reaction_type == reaction_type.to_s }
+    type = reaction_type.to_s
+
+    if reactions.loaded?
+      reactions.count { |r| r.reaction_type == type }
+    else
+      reactions.where(reaction_type: type).count
+    end
   end
 end

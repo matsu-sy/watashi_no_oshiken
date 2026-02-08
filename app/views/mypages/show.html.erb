@@ -5,7 +5,7 @@
   <section class="rounded-2xl border border-slate-200 bg-white shadow-sm">
     <!-- カードヘッダー：プロフィール + 編集 -->
     <div class="flex items-center justify-between px-6 py-6 sm:px-8 sm:pt-8">
-      <h2 class="text-base font-semibold text-[#5B5652]"><%= t(".profile") %></h2>
+      <h2 class="text-base font-semibold text-[#5B5652] mx-auto"><%= t(".profile") %></h2>
 
       <%= link_to "#",
         class: "inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50" do %>
@@ -77,5 +77,24 @@
         </div>
       </div>
     </div>
+  </section>
+</div>
+
+<!-- リアクションした投稿 -->
+<div class="mx-auto w-full max-w-5xl px-4 pb-12">
+  <section class="mt-10">
+    <h2 class="pb-6 text-base font-semibold text-[#5B5652] text-center">
+      <%= t(".reacted_posts") %>
+    </h2>
+
+    <% if @reacted_posts.present? %>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <%= render @reacted_posts %>
+      </div>
+    <% else %>
+      <p class="text-sm text-slate-500 text-center">
+        <%= t(".reacted_posts_empty") %>
+      </p>
+    <% end %>
   </section>
 </div>
