@@ -21,4 +21,26 @@ class MypagesController < ApplicationController
           .order(Arel.sql("array_position(ARRAY[#{reacted_ids.join(',')}], posts.id)"))
       end
   end
+
+  def edit
+    @user = current_user
+    @hometowns = @user.hometowns
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to mypage_path
+    else
+      @hometowns = @user.hometowns
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :image, :hometown_visibility)
+  end
+
 end
