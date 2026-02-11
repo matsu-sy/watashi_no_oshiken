@@ -1,0 +1,113 @@
+<% content_for :page_title, "プロフィール編集" %>
+
+<div class="mx-auto w-full max-w-2xl px-4 pb-10 sm:pb-12">
+  <!-- プロフィールカード -->
+  <section class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <!-- カードヘッダー：タイトル + 戻る -->
+    <div class="flex items-center justify-between px-6 py-6 sm:px-8 sm:pt-8">
+      <h2 class="text-base font-semibold text-[#5B5652] mx-auto">プロフィール</h2>
+    </div>
+
+    <div class="px-8 pb-8 sm:px-10 sm:pb-10">
+      <%= form_with model: @user, url: mypage_path, method: :patch, local: true do |f| %>
+        <!-- エラーメッセージ -->
+        <% if @user.errors.any? %>
+          <div class="mb-6 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+            入力内容を確認してください
+          </div>
+        <% end %>
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-[120px,1fr] sm:gap-8">
+          <!-- 左：画像 -->
+          <div class="flex items-start justify-center">
+            <div class="h-20 w-20 rounded-full bg-slate-100 ring-2 ring-[#92B099]/30 flex items-center justify-center">
+              <span class="text-xs text-slate-400">画像</span>
+            </div>
+          </div>
+
+          <!-- 右：情報 -->
+          <div class="space-y-4">
+            <!-- 名前 -->
+            <div class="rounded-2xl bg-slate-50 px-3 py-4 ring-1 ring-black/5">
+              <div class="grid grid-cols-[100px,1fr] items-center gap-4">
+                <div class="h-8 flex items-center justify-center">
+                  <p class="text-xs font-medium text-slate-500">お名前</p>
+                </div>
+
+                <div>
+                  <%= f.text_field :name,
+                    class: "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-4 focus:ring-[#92B099]/20",
+                    placeholder: "名前を入力してください" %>
+                </div>
+              </div>
+            </div>
+
+            <!-- 出身地 + 公開設定 -->
+            <div class="rounded-2xl bg-slate-50 px-3 py-4 ring-1 ring-black/5">
+              <div class="grid grid-cols-[100px,1fr] items-start gap-4">
+                <div class="flex flex-col gap-2">
+                  <div class="h-8 flex items-center justify-center">
+                    <p class="text-xs font-medium text-slate-500">出身地</p>
+                  </div>
+
+                  <%= f.select :hometown_visibility,
+                      User.hometown_visibilities.keys.map { |k| [k == "visible" ? "公開" : "非公開", k]},
+                      {},
+                      class: "text-xs rounded-lg border border-slate-200 bg-white px-3 py-1.5 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/30" %>
+
+                  <%# NOTE:
+                      現在 hometown_visibility は enum のため
+                      boolean に変更するISSUEでこのスイッチUIを復活させる予定。
+                  %>
+                  <%#
+                  <div class="h-8 flex items-center justify-center">
+                    <label class="inline-flex items-center gap-3 select-none">
+                      <%= f.check_box :hometown_visibility, class: "sr-only peer" %>
+
+                      <%#
+                      <span class="relative inline-flex h-6 w-11 items-center rounded-full bg-slate-300 transition
+                                  peer-checked:bg-[#92B099]
+                                  after:content-[''] after:absolute after:left-1 after:top-1 after:h-4 after:w-4 after:rounded-full after:bg-white after:shadow
+                                  after:transition after:translate-x-0 peer-checked:after:translate-x-5">
+                      </span>
+                      <span class="text-xs font-medium text-slate-700">公開</span>
+                    </label>
+                  </div>
+                  %>
+
+                </div>
+                
+                <!-- 出身県 -->
+                <div class="min-h-[72px] flex flex-wrap items-center gap-2">
+                  <% hometowns = @hometowns.order(:created_at).limit(3) %>
+                  <% if hometowns.present? %>
+                    <% hometowns.each do |h| %>
+                      <span class="inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200">
+                        <%= h.respond_to?(:prefecture_name) ? h.prefecture_name : h.to_s %>
+                      </span>
+                    <% end %>
+                  <% else %>
+                    <span class="text-sm text-slate-500">登録がありません</span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pt-8 text-center space-y-3">
+          <%= f.submit nil,
+                class: "inline-flex items-center justify-center rounded-lg
+                      bg-[#92B099] px-8 py-3 text-base leading-none font-semibold text-white
+                      shadow-sm hover:bg-[#84A88F]
+                      focus:outline-none focus:ring-2 focus:ring-[#92B099]/50" %>
+
+          <div>
+            <%= link_to "戻る", mypage_path,
+                  class: "text-sm text-slate-600 hover:text-slate-800
+                        underline underline-offset-4" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</div>
