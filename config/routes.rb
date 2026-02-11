@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root "posts#index", as: :authenticated_root
   end
 
-    get "mypage", to: "mypages#show", as: :mypage
+    resource :mypage, only: %i[show edit update]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
