@@ -42,5 +42,4 @@ class MypagesController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :image, :hometown_visibility)
   end
-
 end
