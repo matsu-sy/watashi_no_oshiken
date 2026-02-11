@@ -62,6 +62,17 @@ ja:
       hometown_empty: "登録がありません"
       reacted_posts: リアクション一覧
       reacted_posts_empty: "リアクションした投稿はありません"
+    edit:
+      title: プロフィール編集
+      profile: プロフィール
+      error_message: "入力内容を確認してください"
+      name: お名前
+      name_placeholder: "名前を入力してください"
+      hometown: 出身地
+      visible: 公開
+      hidden: 非公開
+      hometown_empty: "登録がありません"
+      back: 戻る
   header:
     sign_up: 新規登録
     sign_in: ログイン
