@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "hometowns/create"
+  get "hometowns/update"
+  get "hometowns/destroy"
   devise_for :users
 
   authenticated :user do
@@ -6,6 +9,7 @@ Rails.application.routes.draw do
   end
 
     resource :mypage, only: %i[show edit update]
+    resources :hometowns, only: %i[create update destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
