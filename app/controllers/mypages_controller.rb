@@ -30,9 +30,15 @@ class MypagesController < ApplicationController
   def update
     @user = current_user
 
+
     ActiveRecord::Base.transaction do
       unless @user.update(user_params.except(:hometown_prefecture_codes))
-        @hometowns = @user.hometowns
+        raise ActiveRecord::Rollback
+      end
+
+      validate_hometowns_input!(@user, user_params[:hometown_prefecture_codes])
+
+      if @user.errors.any?
         raise ActiveRecord::Rollback
       end
 
@@ -53,14 +59,21 @@ class MypagesController < ApplicationController
     params.require(:user).permit(:name, :image, :hometown_visibility, hometown_prefecture_codes: [])
   end
 
+  def validate_hometowns_input!(user, codes_param)
+    raw = Array(codes_param).map { |v| v.to_s.strip }.reject(&:blank?)
+    return if raw.size == raw.uniq.size
+
+    user.errors.add(:base, I18n.t("activerecord.errors.models.hometown.attributes.prefecture_code.taken"))
+  end
+
   def apply_hometowns!(user, codes_param)
-    codes = Array(codes_param).map(&:to_s).map(&:strip).reject(&:blank?).map(&:to_i)
+    codes = Array(codes_param).map { |v| v.to_s.strip }.reject(&:blank?).map(&:to_i)
 
     # DBにある出身地コードを取得
     existing = user.hometowns.pluck(:prefecture_code)
 
     # 差分を計算
-    to_add    = codes - existing
+    to_add = codes - existing
     to_remove = existing - codes
 
     # 削除
@@ -71,12 +84,10 @@ class MypagesController < ApplicationController
       hometown = user.hometowns.create(prefecture_code: code)
       next if hometown.persisted?
 
-      hometown.errors.full_messages.each do |msg|
-        user.errors.add(:base, msg)
-      end
-
+      hometown.errors.full_messages.each { |msg| user.errors.add(:base, msg) }
       raise ActiveRecord::Rollback
     end
+
   rescue ActiveRecord::RecordNotUnique
     user.errors.add(:base, I18n.t("activerecord.errors.models.hometown.attributes.prefecture_code.taken"))
     raise ActiveRecord::Rollback
