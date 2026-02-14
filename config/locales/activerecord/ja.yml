@@ -3,6 +3,12 @@ ja:
     errors:
       messages:
         limit_three: "は最大3つまでしか登録できません"
+        taken: "はすでに存在します"
+      models:
+        hometown:
+          attributes:
+            prefecture_code:
+              taken: "同じ都道府県は重複して登録できません"
     models:
       user: ユーザー
       category: カテゴリ

@@ -12,8 +12,13 @@
       <%= form_with model: @user, url: mypage_path, method: :patch, local: true do |f| %>
         <!-- エラーメッセージ -->
         <% if @user.errors.any? %>
-          <div class="mb-6 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+          <div class="mb-6 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
             <%= t(".error_message") %>
+            <ul class="mt-2 list-disc pl-5 text-rose-700">
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
           </div>
         <% end %>
 
@@ -78,16 +83,16 @@
                 </div>
                 
                 <!-- 出身県 -->
-                <div class="min-h-[72px] flex flex-wrap items-center gap-2">
-                  <% hometowns = @hometowns.order(:created_at).limit(3) %>
-                  <% if hometowns.present? %>
-                    <% hometowns.each do |h| %>
-                      <span class="inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200">
-                        <%= h.respond_to?(:prefecture_name) ? h.prefecture_name : h.to_s %>
-                      </span>
-                    <% end %>
-                  <% else %>
-                    <span class="text-sm text-slate-500"><%= t(".hometown_empty") %></span>
+                <% selected_codes = @hometowns.order(:created_at).limit(3).map(&:prefecture_code) %>
+                <% selected_codes += [nil] * (3 - selected_codes.size) %>
+
+                <div class="space-y-3">
+                  <% 3.times do |i| %>
+                    <div class="flex items-center gap-3">
+                      <%= select_tag "user[hometown_prefecture_codes][]",
+                            options_for_select([["未設定", ""]] + JpPrefecture::Prefecture.all.map { |p| [p.name, p.code] }, selected_codes[i].to_s),
+                            class: "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-4 focus:ring-[#92B099]/20" %>
+                    </div>
                   <% end %>
                 </div>
               </div>
