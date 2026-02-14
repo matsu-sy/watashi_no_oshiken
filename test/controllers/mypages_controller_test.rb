@@ -12,11 +12,11 @@ class MypagesControllerTest < ActionDispatch::IntegrationTest
     patch mypage_url, params: {
       user: {
         name: @user.name,
-        hometown_prefecture_codes: ["13", "27"]
+        hometown_prefecture_codes: [ "13", "27" ]
       }
     }
 
     assert_response :redirect
-    assert_equal [13, 27], @user.hometowns.order(:prefecture_code).pluck(:prefecture_code)
+    assert_equal [ 13, 27 ], @user.hometowns.order(:prefecture_code).pluck(:prefecture_code)
   end
 end
