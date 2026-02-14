@@ -19,7 +19,7 @@
     </div>
 
     <div class="px-8 pb-8 sm:px-10 sm:pb-10">
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-[120px,1fr] sm:gap-8">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-[100px,1fr] sm:gap-6">
         <!-- 左：画像 -->
         <div class="flex items-start justify-center">
           <div class="h-20 w-20 rounded-full bg-slate-100 ring-2 ring-[#92B099]/30 flex items-center justify-center">
@@ -62,15 +62,21 @@
               <!-- 出身県 -->
               <div class="min-h-[72px] flex flex-wrap items-center gap-2">
                 <% hometowns = @hometowns.order(:created_at).limit(3) %>
+                <% hometowns += [nil] * (3 - hometowns.size) %>
 
-                <% if hometowns.present? %>
-                  <% hometowns.each do |h| %>
-                    <span class="inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200">
-                      <%= h.respond_to?(:prefecture_name) ? h.prefecture_name : h.to_s %>
-                    </span>
-                  <% end %>
-                <% else %>
-                  <span class="text-sm text-slate-500"><%= t(".hometown_empty") %></span>
+                <% hometowns.each do |h| %>
+                  <% name = h&.prefecture&.name %>
+                  <% is_set = name.present? %>
+
+                  <span
+                    class="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium ring-1
+                          <%= if is_set
+                                'bg-white text-[#5F7F69] ring-[#92B099]'
+                              else
+                                'bg-white text-slate-400 ring-slate-200'
+                              end %>">
+                    <%= name.presence || "未設定" %>
+                  </span>
                 <% end %>
               </div>
             </div>

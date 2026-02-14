@@ -29,17 +29,56 @@ class MypagesController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(user_params)
-      redirect_to mypage_path
-    else
+
+    ActiveRecord::Base.transaction do
+      unless @user.update(user_params.except(:hometown_prefecture_codes))
+        @hometowns = @user.hometowns
+        raise ActiveRecord::Rollback
+      end
+
+      apply_hometowns!(@user, user_params[:hometown_prefecture_codes])
+    end
+
+    if @user.errors.any?
       @hometowns = @user.hometowns
       render :edit, status: :unprocessable_entity
+    else
+      redirect_to mypage_path
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :image, :hometown_visibility)
+    params.require(:user).permit(:name, :image, :hometown_visibility, hometown_prefecture_codes: [])
+  end
+
+  def apply_hometowns!(user, codes_param)
+    codes = Array(codes_param).map(&:to_s).map(&:strip).reject(&:blank?).map(&:to_i)
+
+    # DBにある出身地コードを取得
+    existing = user.hometowns.pluck(:prefecture_code)
+
+    # 差分を計算
+    to_add    = codes - existing
+    to_remove = existing - codes
+
+    # 削除
+    user.hometowns.where(prefecture_code: to_remove).destroy_all if to_remove.any?
+
+    # 追加
+    to_add.each do |code|
+      hometown = user.hometowns.create(prefecture_code: code)
+      next if hometown.persisted?
+
+      hometown.errors.full_messages.each do |msg|
+        user.errors.add(:base, msg)
+      end
+
+      raise ActiveRecord::Rollback
+    end
+  rescue ActiveRecord::RecordNotUnique
+    user.errors.add(:base, I18n.t("activerecord.errors.models.hometown.attributes.prefecture_code.taken"))
+    raise ActiveRecord::Rollback
   end
 end
