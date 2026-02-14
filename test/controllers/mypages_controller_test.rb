@@ -3,11 +3,20 @@ require "test_helper"
 class MypagesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  test "should get show" do
-    user = users(:one) # fixtures に one がある前提
-    sign_in user
+  setup do
+    @user = users(:one)
+    sign_in @user
+  end
 
-    get mypage_url
-    assert_response :success
+  test "should update hometowns by mypage update" do
+    patch mypage_url, params: {
+      user: {
+        name: @user.name,
+        hometown_prefecture_codes: ["13", "27"]
+      }
+    }
+
+    assert_response :redirect
+    assert_equal [13, 27], @user.hometowns.order(:prefecture_code).pluck(:prefecture_code)
   end
 end
