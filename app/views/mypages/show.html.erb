@@ -53,8 +53,8 @@
                 <!-- 公開設定 -->
                 <div class="h-8 flex items-center justify-center">
                   <span class="inline-flex items-center justify-center rounded-full border px-2.5 py-1 text-xs font-medium whitespace-nowrap
-                              <%= @user.visible? ? 'border-[#92B099]/40 text-[#5F7F69] bg-[#92B099]/10' : 'border-slate-200 text-slate-500 bg-white' %>">
-                    <%= @user.visible? ? t(".visible") : t(".hidden") %>
+                              <%= @user.hometown_visibility ? 'border-[#92B099]/40 text-[#5F7F69] bg-[#92B099]/10' : 'border-slate-200 text-slate-500 bg-white' %>">
+                    <%= @user.hometown_visibility ? t(".visible") : t(".hidden") %>
                   </span>
                 </div>
               </div>
