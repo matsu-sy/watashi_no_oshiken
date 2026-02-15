@@ -55,21 +55,10 @@
                     <p class="text-xs font-medium text-slate-500"><%= t(".hometown") %></p>
                   </div>
 
-                  <%= f.select :hometown_visibility,
-                      User.hometown_visibilities.keys.map { |k| [k == "visible" ? t(".visible") : t(".hidden"), k]},
-                      {},
-                      class: "text-xs rounded-lg border border-slate-200 bg-white px-3 py-1.5 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/30" %>
-
-                  <%# NOTE:
-                      現在 hometown_visibility は enum のため
-                      boolean に変更するISSUEでこのスイッチUIを復活させる予定。
-                  %>
-                  <%#
                   <div class="h-8 flex items-center justify-center">
                     <label class="inline-flex items-center gap-3 select-none">
                       <%= f.check_box :hometown_visibility, class: "sr-only peer" %>
 
-                      <%#
                       <span class="relative inline-flex h-6 w-11 items-center rounded-full bg-slate-300 transition
                                   peer-checked:bg-[#92B099]
                                   after:content-[''] after:absolute after:left-1 after:top-1 after:h-4 after:w-4 after:rounded-full after:bg-white after:shadow
@@ -78,8 +67,6 @@
                       <span class="text-xs font-medium text-slate-700">公開</span>
                     </label>
                   </div>
-                  %>
-
                 </div>
                 
                 <!-- 出身県 -->
