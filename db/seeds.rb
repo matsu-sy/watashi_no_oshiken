@@ -8,4 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+puts "[SEED] start"
+
 Category.find_or_create_by!(name: "風景")
+
+puts "[SEED] done count=#{Category.count}"
