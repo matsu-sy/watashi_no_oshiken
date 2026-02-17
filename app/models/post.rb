@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   has_many :reactions, dependent: :destroy
   has_many :reacting_users, through: :reactions, source: :user
 
+  has_one_attached :image
+
   jp_prefecture :prefecture_code
 
   validates :body, presence: true, length: { maximum: 280 }
@@ -31,4 +33,21 @@ class Post < ApplicationRecord
       reactions.where(reaction_type: type).count
     end
   end
+
+  ACCEPTED_CONTENT_TYPES = %w[image/jpeg image/png image/webp].freeze
+
+  validates :image,
+    content_type: { in: ACCEPTED_CONTENT_TYPES },
+    size: { less_than_or_equal_to: 5.megabytes }
+
+  def image_index
+    return unless image.attached?
+    image.variant(resize_to_fill: [600, 200]).processed
+  end
+
+  def image_show
+    return unless image.attached?
+    image.variant(resize_to_limit: [1200, 1200]).processed
+  end
+
 end
