@@ -1,5 +1,5 @@
 <article
-  class="relative group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition
+  class="relative group flex h-[300px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition
          hover:border-slate-300 hover:shadow hover:-translate-y-1">
 
   <div class="relative">
@@ -46,19 +46,20 @@
     </div>
 
     <!-- 本文 -->
-      <p class="text-base leading-relaxed text-slate-700 line-clamp-3">
-        <%= post.body %>
-      </p>
+    <p class="flex-1 text-base leading-relaxed text-slate-700 line-clamp-4">
+      <%= post.body %>
+    </p>
 
-    <!-- 写真（仮） -->
-    <div class="mt-auto auto h-20 overflow-hidden rounded-xl bg-slate-100">
-      <div class="flex h-full items-center justify-center text-xs text-slate-400">
-        写真
+    <!-- 写真 -->
+    <% if post.image.attached? %>
+      <div class="h-32 overflow-hidden rounded-xl bg-slate-100">
+        <%= image_tag post.image_index,
+              class: "h-full w-full object-cover" %>
       </div>
-    </div>
+    <% end %>
 
-    <!-- リアクション（仮） -->
-    <div class="mt-4 flex items-center justify-between">
+    <!-- リアクション -->
+    <div class="mt-auto border-t border-slate-100 pt-3 flex items-center justify-between">
       <%= render "posts/reactions", post: post %>
       <span class="text-xs text-slate-500"><%= post.created_at.strftime("%m/%d %H:%M") %></span>
     </div>
