@@ -42,7 +42,7 @@ class Post < ApplicationRecord
 
   def image_index
     return unless image.attached?
-    image.variant(resize_to_fill: [600, 200]).processed
+    image.variant(resize_to_limit: [600, 200]).processed
   end
 
   def image_show

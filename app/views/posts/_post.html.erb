@@ -1,5 +1,5 @@
 <article
-  class="relative group flex h-[300px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition
+  class="relative group flex h-[340px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition
          hover:border-slate-300 hover:shadow hover:-translate-y-1">
 
   <div class="relative">
@@ -46,15 +46,17 @@
     </div>
 
     <!-- 本文 -->
-    <p class="flex-1 text-base leading-relaxed text-slate-700 line-clamp-4">
+    <% clamp_class = post.image.attached? ? "line-clamp-2" : "line-clamp-6" %>
+
+    <p class="text-sm leading-relaxed text-slate-700 <%= clamp_class %> min-h-0">
       <%= post.body %>
     </p>
 
     <!-- 写真 -->
     <% if post.image.attached? %>
-      <div class="h-32 overflow-hidden rounded-xl bg-slate-100">
+      <div class="h-24 overflow-hidden rounded-xl bg-slate-100 flex items-center justify-center">
         <%= image_tag post.image_index,
-              class: "h-full w-full object-cover" %>
+              class: "h-full w-full object-contain" %>
       </div>
     <% end %>
 
