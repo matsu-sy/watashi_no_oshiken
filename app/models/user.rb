@@ -30,12 +30,12 @@ class User < ApplicationRecord
   # 小さめ
   def avatar_index
     return unless avatar.attached?
-    avatar.variant(resize_to_fill: [96, 96]).processed
+    avatar.variant(resize_to_fill: [ 96, 96 ]).processed
   end
 
   # 大きめ
   def avatar_show
     return unless avatar.attached?
-    avatar.variant(resize_to_fill: [240, 240]).processed
+    avatar.variant(resize_to_fill: [ 240, 240 ]).processed
   end
 end
