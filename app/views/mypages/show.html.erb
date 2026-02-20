@@ -22,9 +22,16 @@
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-[100px,1fr] sm:gap-6">
         <!-- 左：画像 -->
         <div class="flex items-start justify-center">
-          <div class="h-20 w-20 rounded-full bg-slate-100 ring-2 ring-[#92B099]/30 flex items-center justify-center">
-            <span class="text-xs text-slate-400">画像</span>
-          </div>
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar_show,
+                  class: "h-20 w-20 rounded-full object-cover ring-2 ring-[#92B099]/30 bg-white" %>
+          <% else %>
+            <div class="h-20 w-20 rounded-full bg-slate-100 ring-2 ring-[#92B099]/30 flex items-center justify-center">
+              <span class="text-lg font-semibold text-slate-500">
+                <%= @user.name.to_s.strip.first&.upcase || "?" %>
+              </span>
+            </div>
+          <% end %>
         </div>
 
         <!-- 右：情報 -->

@@ -30,7 +30,6 @@ class MypagesController < ApplicationController
   def update
     @user = current_user
 
-
     ActiveRecord::Base.transaction do
       unless @user.update(user_params.except(:hometown_prefecture_codes))
         raise ActiveRecord::Rollback
@@ -53,10 +52,15 @@ class MypagesController < ApplicationController
     end
   end
 
+  def destroy_avatar
+    current_user.avatar.purge_later if current_user.avatar.attached?
+    redirect_to edit_mypage_path, notice: t("flash_message.users.avatar_deleted")
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :image, :hometown_visibility, hometown_prefecture_codes: [])
+    params.require(:user).permit(:name, :avatar, :hometown_visibility, hometown_prefecture_codes: [])
   end
 
   def validate_hometowns_input!(user, codes_param)
