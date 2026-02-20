@@ -4,6 +4,8 @@ ja:
       create: 投稿する
       update: 更新する
   flash_message:
+    users:
+      avatar_deleted: "アイコン画像を削除しました"
     posts:
       create:
         success: "投稿しました"

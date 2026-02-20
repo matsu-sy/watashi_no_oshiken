@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     root "posts#index", as: :authenticated_root
   end
 
-    resource :mypage, only: %i[show edit update]
+    resource :mypage, only: %i[show edit update] do
+      delete :avatar, to: "mypages#destroy_avatar"
+    end
     resources :hometowns, only: %i[create update destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

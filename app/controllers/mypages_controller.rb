@@ -56,7 +56,7 @@ class MypagesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :image, :hometown_visibility, hometown_prefecture_codes: [])
+    params.require(:user).permit(:name, :avatar, :hometown_visibility, hometown_prefecture_codes: [])
   end
 
   def validate_hometowns_input!(user, codes_param)
@@ -91,5 +91,10 @@ class MypagesController < ApplicationController
   rescue ActiveRecord::RecordNotUnique
     user.errors.add(:base, I18n.t("activerecord.errors.models.hometown.attributes.prefecture_code.taken"))
     raise ActiveRecord::Rollback
+  end
+
+  def destroy_avatar
+    current_user.avatar.purge_later if current_user.avatar.attached?
+    redirect_to edit_mypage_path, notice: t("flash_message.users.avatar_deleted")
   end
 end
