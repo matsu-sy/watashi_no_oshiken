@@ -17,7 +17,7 @@
           <path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 16h10l1-16"/><path d="M10 11v6"/><path d="M14 11v6"/>
         </svg>
 
-        <span>削除</span>
+        <span><%= t("posts.edit.delete_button") %></span>
       </button>
     </div>
 
@@ -33,27 +33,26 @@
 
       <div class="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl text-center">
         <h2 class="text-base font-semibold text-slate-800">
-          投稿を削除してよろしいですか？
+          <%= t("posts.edit.confirm_delete_title") %>
         </h2>
 
         <p class="mt-2 text-sm text-slate-600">
-          一度削除すると元に戻せません。
+          <%= t("posts.edit.confirm_delete_body") %>
         </p>
 
         <div class="mt-6 flex justify-center gap-4">
           <button type="button"
             data-action="click->confirm-modal#close"
             class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
-            キャンセル
+            <%= t("posts.edit.cancel_button") %>
           </button>
 
-          <%= link_to "削除する",
+          <%= link_to t("posts.edit.delete_submit"),
                 post_path(@post),
                 data: { turbo_method: :delete },
                 class: "rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700" %>
         </div>
       </div>
     </div>
-
   </div>
 </div>

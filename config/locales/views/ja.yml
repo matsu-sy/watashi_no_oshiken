@@ -38,14 +38,21 @@ ja:
       title: 投稿詳細
     edit:
       title: 編集
+      delete_button: 削除
+      confirm_delete_title: 投稿を削除してよろしいですか？
+      confirm_delete_body: 一度削除すると元に戻せません。
+      cancel_button: キャンセル
+      delete_submit: 削除する
     form:
       errors_title: "入力内容をご確認ください（%{count}件）"
       required_mark: "*"
-      prefecture_help: "※あなたの出身県以外の「推し県」を選んでください"
+      prefecture_help: "※ あなたの出身県以外の「推し県」を選んでください"
       prefecture_prompt: 選択してください
       category_prompt: 選択してください
       body_placeholder: "例：駅前の定食屋さんが安くて美味しかった。地元の人が優しかった…など"
       image_label: 画像
+      current_image: 現在の画像
+      image_help: "※ 変更する場合のみ選択してください（未選択のままでも現在の画像は保持されます）"
       place_label: 場所名
       place_placeholder: "例：ひたち海浜公園 / ○○駅周辺 / △△温泉 など"
       back: 戻る
