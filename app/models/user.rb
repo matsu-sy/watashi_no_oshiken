@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :name, presence: true, length: { maximum: 30 }
-  validate :avatar_validation
 
   def own?(object)
     id == object&.user_id

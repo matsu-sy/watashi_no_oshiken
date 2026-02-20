@@ -30,7 +30,6 @@ class MypagesController < ApplicationController
   def update
     @user = current_user
 
-
     ActiveRecord::Base.transaction do
       unless @user.update(user_params.except(:hometown_prefecture_codes))
         raise ActiveRecord::Rollback
@@ -51,6 +50,11 @@ class MypagesController < ApplicationController
     else
       redirect_to mypage_path
     end
+  end
+
+  def destroy_avatar
+    current_user.avatar.purge_later if current_user.avatar.attached?
+    redirect_to edit_mypage_path, notice: t("flash_message.users.avatar_deleted")
   end
 
   private
@@ -91,10 +95,5 @@ class MypagesController < ApplicationController
   rescue ActiveRecord::RecordNotUnique
     user.errors.add(:base, I18n.t("activerecord.errors.models.hometown.attributes.prefecture_code.taken"))
     raise ActiveRecord::Rollback
-  end
-
-  def destroy_avatar
-    current_user.avatar.purge_later if current_user.avatar.attached?
-    redirect_to edit_mypage_path, notice: t("flash_message.users.avatar_deleted")
   end
 end

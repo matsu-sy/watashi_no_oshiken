@@ -77,9 +77,15 @@ ja:
       error_message: "入力内容を確認してください"
       name: お名前
       name_placeholder: "名前を入力してください"
+      avatar: アイコン
+      current_avatar: 現在のアイコン
+      delete_avatar: 削除
+      delete_avatar_confirm: "アイコン画像を削除します。よろしいですか？"
       hometown: 出身地
       visible: 公開
       hidden: 非公開
+      hometown_unset: 未設定
+      hometown_help: "出身地を3つまで登録できます"
       hometown_empty: "登録がありません"
       back: 戻る
   header:
