@@ -54,11 +54,36 @@
   </div>
 
   <%# 画像 %>
-  <div class="space-y-1">
-    <%= f.label :image, t("posts.form.image_label"), class: "block text-sm font-medium text-[#5B5652]" %>
+  <div class="space-y-2">
+    <div class="flex items-baseline justify-between">
+      <%= f.label :image, t("posts.form.image_label"), class: "block text-sm font-medium text-[#5B5652]" %>
+    </div>
+
+    <%# 現在の画像 %>
+    <% if @post.image.attached? %>
+      <p class="text-xs text-slate-500">
+        <%= t("posts.form.image_help") %>
+      </p>
+      <div class="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
+        <div class="h-10 w-10 overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 flex items-center justify-center">
+          <%= image_tag @post.image_show, class: "h-full w-full object-cover" %>
+        </div>
+
+        <div class="min-w-0">
+          <p class="text-xs text-slate-500"><%= t("posts.form.current_image") %></p>
+          <p class="truncate text-sm font-medium text-slate-700">
+            <%= @post.image.filename.to_s %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+
     <%= f.file_field :image,
           accept: "image/*",
-          class: "block w-full text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-[#92B099]/40 file:px-4 file:py-2 file:text-sm file:font-medium file:text-[#5B5652] hover:file:bg-[#92B099]/55" %>
+          class: "block w-full rounded-xl border border-slate-200 bg-white text-sm text-slate-700
+                  file:mr-3 file:rounded-lg file:border-0 file:bg-[#92B099]/40 file:px-4 file:py-2
+                  file:text-sm file:font-medium file:text-[#5B5652] hover:file:bg-[#92B099]/55
+                  focus:outline-none focus:ring-2 focus:ring-[#92B099]/35" %>
   </div>
 
   <%# 場所名 Google PlaceはMVP後 %>
