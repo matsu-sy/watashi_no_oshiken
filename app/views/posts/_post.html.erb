@@ -52,11 +52,11 @@
       <%= post.body %>
     </p>
 
-    <!-- 写真 -->
+    <!-- 画像 -->
     <% if post.image.attached? %>
       <div class="h-24 overflow-hidden rounded-xl bg-slate-100 flex items-center justify-center">
         <%= image_tag post.image_index,
-              class: "h-full w-full object-contain" %>
+              class: "h-auto w-full object-contain" %>
       </div>
     <% end %>
 
