@@ -15,6 +15,8 @@ ja:
         failure: "更新できませんでした"
       deleted:
         success: "削除しました"
+  common:
+    here: こちら
   devise:
     registrations:
       new:
@@ -25,6 +27,7 @@ ja:
       new:
         title: ログイン
         submit: ログイン
+        remember_me: ログインを記憶する
         forgot_password: パスワードをお忘れの方は
         no_account: アカウントをお持ちでない方は
   top:
