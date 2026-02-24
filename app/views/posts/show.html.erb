@@ -11,16 +11,24 @@
 
   <!-- 投稿詳細 -->
   <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-    <!-- 県 / カテゴリ -->
-    <div class="flex w-full items-center bg-[#92B099] px-5 py-3 text-base text-white">
+    <div class="flex w-full items-center justify-between bg-[#92B099] px-5 py-3 text-base text-white">
+      <!-- 県 / カテゴリ -->
       <div class="flex items-center gap-2">
         <span class="font-semibold"><%= @post.prefecture_name %></span>
         <span class="mx-2 text-base text-white/90">の</span>
         <span class="font-semibold"><%= @post.category.name %></span>
-        <!-- 編集 -->
+      </div> 
+      <!-- 編集 -->
+      <div>
         <% if current_user.own?(@post) %>
-          <%= link_to "✐", edit_post_path(@post),
-                class: "rounded-full px-3 py-1 text-base text-white hover:bg-white/30" %>
+          <%= link_to edit_post_path(@post),
+              class: "ml-auto inline-flex h-8 w-8 items-center justify-center rounded-full
+                      bg-white/10 text-white hover:bg-white/20
+                      focus:outline-none focus:ring-2 focus:ring-white/40" do %>
+          <%= render "shared/icon",
+                name: :edit,
+                icon_class: "h-4 w-4 fill-none stroke-current stroke-2" %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -34,9 +42,6 @@
           <p class="truncate text-sm font-semibold text-slate-700">
             <%= @post.user.name %>
           </p>
-          <% if @post.place_name.present? %>
-            <p class="text-xs text-slate-500"><%= @post.place_name %></p>
-          <% end %>
         </div>
       </div>
 
@@ -45,7 +50,7 @@
         <%= @post.body %>
       </div>
 
-      <!-- 写真-->
+      <!-- 画像-->
       <% if @post.image.attached? %>
         <div class="overflow-hidden rounded-2xl bg-slate-100 ">
           <%= image_tag @post.image_show,
@@ -53,13 +58,17 @@
         </div>
       <% end %>
 
-      <!-- リアクション（仮） -->
-      <div class="flex items-center justify-between border-t border-slate-100 pt-4">
-        <div class="flex gap-2">
-          <button class="rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 hover:bg-slate-50">👀</button>
-          <button class="rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 hover:bg-slate-50">❤</button>
-          <button class="rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 hover:bg-slate-50">📍</button>
+      <!-- 場所名 -->
+      <% if @post.place_name.present? %>
+        <div class="flex items-center gap-1.5 text-sm text-slate-400">
+          <%= render "shared/icon", name: :map_pin, icon_class: "h-4 w-4 fill-current opacity-80" %>
+          <span class="truncate"><%= @post.place_name %></span>
         </div>
+      <% end %>
+
+      <!-- リアクション -->
+      <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+        <%= render "posts/reactions", post: @post %>
 
         <span class="text-xs text-slate-500">
           <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
