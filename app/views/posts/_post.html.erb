@@ -1,6 +1,14 @@
-<article
-  class="relative group flex h-[340px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition
-         hover:border-slate-300 hover:shadow hover:-translate-y-1">
+<%
+  card_height =
+    if post.image.attached? || post.place_name.present?
+      "h-[340px]"
+    else
+      "h-[300px]"
+    end
+%>
+
+<article class="relative group flex <%= card_height %> flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-slate-300 hover:shadow hover:-translate-y-1">
+
 
   <div class="relative">
     <% unless user_signed_in? %>
@@ -39,24 +47,43 @@
         <p class="truncate text-sm font-semibold text-slate-700">
           <%= post.user.name %>
         </p>
-        <p class="text-xs text-slate-500">
-          <%= post.place_name.presence || "" %>
-        </p>
       </div>
     </div>
 
     <!-- 本文 -->
-    <% clamp_class = post.image.attached? ? "line-clamp-2" : "line-clamp-6" %>
+    <%
+      clamp_class =
+        if post.image.attached? && post.place_name.present?
+          "line-clamp-1"
+        elsif post.image.attached?
+          "line-clamp-2"
+        else
+          "line-clamp-5"
+        end
+    %>
 
     <p class="text-sm leading-relaxed text-slate-700 <%= clamp_class %> min-h-0">
       <%= post.body %>
     </p>
 
     <!-- 画像 -->
-    <% if post.image.attached? %>
-      <div class="h-24 overflow-hidden rounded-xl bg-slate-100 flex items-center justify-center">
-        <%= image_tag post.image_index,
-              class: "h-auto w-full object-contain" %>
+    <% if post.image.attached? || post.place_name.present? %>
+      <div class="space-y-2">
+        <% if post.image.attached? %>
+          <div class="h-24 overflow-hidden rounded-xl bg-slate-100">
+            <%= image_tag post.image_index, class: "h-auto w-full object-contain" %>
+          </div>
+        <% end %>
+
+        <% if post.place_name.present? %>
+          <div class="flex items-center gap-1.5 min-w-0 text-xs text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 fill-current opacity-80" aria-hidden="true">
+              <path d="M12 21c-4.5-4.5-7-7.6-7-11a7 7 0 1 1 14 0c0 3.4-2.5 6.5-7 11z"/>
+              <circle cx="12" cy="10" r="3" fill="white"/>
+            </svg>
+            <span class="truncate"><%= post.place_name %></span>
+          </div>
+        <% end %>
       </div>
     <% end %>
 
