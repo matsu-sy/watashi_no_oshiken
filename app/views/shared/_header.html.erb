@@ -12,8 +12,10 @@
       <% if user_signed_in? %>
         <%= link_to t('header.create_post'), new_post_path,
               class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-[#92B099] text-white hover:bg-[#86A78D]" %>
-        <%= link_to t('header.mypage'), mypage_path,
-              class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium border border-[#86A78D] text-[#86A78D] hover:bg-[#92B099]/5" %>
+        <%= link_to mypage_path,
+              class: "inline-flex items-center rounded-full transition hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#92B099]/40" do %>
+          <%= render "shared/avatar", user: current_user, size_class: "h-9 w-9", variant_px: 72, ring: false %>
+        <% end %>
         <%= button_to t('header.sign_out'),
               destroy_user_session_path,
               method: :delete,

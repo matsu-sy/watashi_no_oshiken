@@ -1,0 +1,19 @@
+<%# locals: user:, size_class: "h-12 w-12", variant_px: 96, ring: true/false %>
+<% size_class ||= "h-12 w-12" %>
+<% variant_px ||= 96 %>
+<% ring = true if ring.nil? %>
+
+<% ring_class = ring ? "ring-2 ring-[#92B099]/30" : "" %>
+
+<div class="<%= [size_class, "shrink-0"].join(" ") %>">
+  <% if user.avatar.attached? %>
+    <%= image_tag user.avatar_variant(variant_px),
+          class: ["w-full h-full rounded-full object-cover bg-white", ring_class].join(" ") %>
+  <% else %>
+    <div class="<%= ["w-full h-full rounded-full bg-slate-100 flex items-center justify-center", ring_class].join(" ") %>">
+      <span class="text-lg font-semibold text-slate-500">
+        <%= user.name.to_s.strip.first&.upcase || "?" %>
+      </span>
+    </div>
+  <% end %>
+</div>

@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:user, :category).find(params[:id])
+    @post = Post.includes(:user, :category, :reactions).find(params[:id])
   end
 
   def edit
