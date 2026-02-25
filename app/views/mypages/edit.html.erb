@@ -12,22 +12,18 @@
       <div class="mb-8 flex flex-col items-center text-center">
 
         <div class="relative mt-5">
-          <% if @user.avatar.attached? %>
-            <%= image_tag @user.avatar_show,
-                  class: "h-24 w-24 rounded-full object-cover ring-2 ring-[#92B099]/30 bg-white" %>
+          <%= render "shared/avatar",
+                user: @user,
+                size_class: "h-24 w-24",
+                variant_px: 240 %>
 
+          <% if @user.avatar.attached? %>
             <div class="absolute -right-3 -bottom-3">
               <%= button_to t(".delete_avatar"),
                     avatar_mypage_path,
                     method: :delete,
                     form: { data: { turbo_confirm: t(".delete_avatar_confirm") } },
                     class: "rounded-full border border-rose-200 bg-white px-3 py-1.5 text-xs font-medium text-rose-700 shadow-sm hover:bg-rose-50" %>
-            </div>
-          <% else %>
-            <div class="h-24 w-24 rounded-full bg-slate-100 ring-2 ring-[#92B099]/30 flex items-center justify-center">
-              <span class="text-xl font-semibold text-slate-500">
-                <%= @user.name.to_s.strip.first&.upcase || "?" %>
-              </span>
             </div>
           <% end %>
         </div>
