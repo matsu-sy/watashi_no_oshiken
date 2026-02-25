@@ -27,6 +27,12 @@ class User < ApplicationRecord
     content_type: { in: ACCEPTED_CONTENT_TYPES },
     size: { less_than_or_equal_to: 5.megabytes }
 
+  # 任意サイズ
+  def avatar_variant(px)
+    return unless avatar.attached?
+    avatar.variant(resize_to_fill: [px, px]).processed
+  end
+
   # 小さめ
   def avatar_index
     return unless avatar.attached?
