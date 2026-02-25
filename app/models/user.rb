@@ -30,7 +30,7 @@ class User < ApplicationRecord
   # 任意サイズ
   def avatar_variant(px)
     return unless avatar.attached?
-    avatar.variant(resize_to_fill: [px, px]).processed
+    avatar.variant(resize_to_fill: [ px, px ]).processed
   end
 
   # 小さめ
