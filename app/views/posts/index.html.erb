@@ -1,5 +1,10 @@
 <% content_for :page_title, t("posts.index.title") %>
 
+<div class="flex gap-4 mb-6">
+  <%= link_to "出身地の投稿一覧", posts_path(filter: "hometown") %>
+  <%= link_to "すべての投稿一覧", posts_path(filter: "all") %>
+</div>
+
 <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
   <% if @posts.present? %>
     <%= render @posts %>
