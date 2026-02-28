@@ -1,8 +1,15 @@
 <% content_for :page_title, t("posts.index.title") %>
 
-<div class="flex gap-4 mb-6">
-  <%= link_to "出身地の投稿一覧", posts_path(filter: "hometown") %>
-  <%= link_to "すべての投稿一覧", posts_path(filter: "all") %>
+<div class="mx-auto flex justify-center gap-10 mb-10">
+  <%= link_to "出身地の投稿一覧",
+      posts_path(filter: "hometown"),
+      class: "block min-w-[220px] text-center pb-2 border-b text-[#5B5652] " +
+             (@current_filter == "hometown" ? "border-[#92B099] border-b-2 font-semibold" : "border-slate-200") %>
+
+  <%= link_to "すべての投稿一覧",
+      posts_path(filter: "all"),
+      class: "block min-w-[220px] text-center pb-2 border-b text-[#5B5652] " +
+             (@current_filter == "all" ? "border-[#92B099] border-b-2 font-semibold" : "border-slate-200") %>
 </div>
 
 <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
