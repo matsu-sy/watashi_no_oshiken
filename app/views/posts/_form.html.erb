@@ -36,7 +36,7 @@
       <span class="ml-1 text-xs font-semibold text-[#92B099]"><%= t("posts.form.required_mark") %></span>
     <% end %>
     <%= f.collection_select :category_id,
-          Category.order(:name), :id, :name,
+          Category.order(:id), :id, :name,
           { prompt: t("posts.form.category_prompt") },
           class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
   </div>
