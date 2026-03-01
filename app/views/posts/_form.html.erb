@@ -6,7 +6,7 @@
         <%= t("posts.form.errors_title", count: post.errors.count) %>
       </p>
       <ul class="mt-2 list-disc pl-5 text-sm text-rose-700 space-y-1">
-        <% order = [:prefecture_code, :category, :body, :place_name] %>
+        <% order = [:base, :prefecture_code, :category, :body, :place_name] %>
         <% order.each do |attr| %>
           <% post.errors.full_messages_for(attr).each do |msg| %>
             <li><%= msg %></li>
@@ -23,7 +23,7 @@
       <span class="ml-1 text-xs font-semibold text-[#92B099]"><%= t("posts.form.required_mark") %></span>
     <% end %>
     <%= f.collection_select :prefecture_code,
-        JpPrefecture::Prefecture.all, :code, :name,
+        (@prefectures || JpPrefecture::Prefecture.all), :code, :name,
         { prompt: t("posts.form.prefecture_prompt") },
         class: "w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-2 focus:ring-[#92B099]/40" %>
     <p class="text-xs text-slate-500"><%= t("posts.form.prefecture_help") %></p>
