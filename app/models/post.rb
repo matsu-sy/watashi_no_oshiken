@@ -20,6 +20,8 @@ class Post < ApplicationRecord
   validates :latitude, numericality: true, allow_nil: true
   validates :longitude, numericality: true, allow_nil: true
 
+  validate :reject_hometown_prefecture
+
   def prefecture_name
     prefecture&.name
   end
@@ -48,5 +50,14 @@ class Post < ApplicationRecord
   def image_show
     return unless image.attached?
     image.variant(resize_to_limit: [ 1200, 1200 ]).processed
+  end
+
+  def reject_hometown_prefecture
+    return if user.blank? || prefecture_code.blank?
+
+    hometown_codes = user.hometowns.pluck(:prefecture_code).map(&:to_i)
+    return unless hometown_codes.include?(prefecture_code.to_i)
+
+    errors.add(:base, :hometown_forbidden)
   end
 end

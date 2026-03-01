@@ -22,6 +22,7 @@ class User < ApplicationRecord
   end
 
   ACCEPTED_CONTENT_TYPES = %w[image/jpeg image/png image/webp].freeze
+  HOMETOWNS_COOLDOWN = 7.days
 
   validates :avatar,
     content_type: { in: ACCEPTED_CONTENT_TYPES },
@@ -43,5 +44,15 @@ class User < ApplicationRecord
   def avatar_show
     return unless avatar.attached?
     avatar.variant(resize_to_fill: [ 240, 240 ]).processed
+  end
+
+  def hometowns_editable?(now: Time.current)
+    return true if hometowns_committed_at.nil?
+    now >= hometowns_committed_at + HOMETOWNS_COOLDOWN
+  end
+
+  def hometowns_unlock_at
+    return nil if hometowns_committed_at.nil?
+    hometowns_committed_at + HOMETOWNS_COOLDOWN
   end
 end

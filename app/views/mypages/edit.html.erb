@@ -33,6 +33,27 @@
       <%= form_with model: @user, url: mypage_path, method: :patch,
             local: true, data: { turbo: false }, html: { multipart: true } do |f| %>
 
+        <!-- エラーメッセージ -->
+        <% if @user.errors.any? %>
+          <div class="mb-6 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3">
+            <p class="text-sm font-medium text-rose-800">
+              <%= t(".error_message", count: @user.errors.count) %>
+            </p>
+
+            <ul class="mt-2 list-disc pl-5 text-sm text-rose-700 space-y-1">
+              <% @user.errors.full_messages_for(:base).each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+
+              <% [:name, :avatar, :hometown_visibility].each do |attr| %>
+                <% @user.errors.full_messages_for(attr).each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <div class="grid grid-cols-[90px,1fr] items-center gap-x-6 gap-y-5">
           <!-- 画像 -->
           <div class="text-sm font-medium text-center text-slate-600"><%= t(".avatar") %></div>
@@ -83,7 +104,12 @@
                         class: "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-800 shadow-sm focus:border-[#92B099] focus:ring-4 focus:ring-[#92B099]/20" %>
                 <% end %>
 
-                <p class="text-xs text-slate-500 pl-3"><%= t(".hometown_help") %></p>
+                <p class="text-xs text-slate-500 pl-3">
+                  <%= t(".hometown_help") %>
+                  <span class="block mt-1 text-amber-700">
+                    <%= t(".hometown_cooldown_help") %>
+                  </span>
+                </p>
               </div>
             </div>
           </div>

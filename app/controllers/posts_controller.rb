@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to posts_path, notice: t("flash_message.posts.create.success")
+      redirect_to posts_path(filter: "all"), notice: t("flash_message.posts.create.success")
     else
       flash.now[:alert] = t("flash_message.posts.create.failure")
       render :new, status: :unprocessable_entity

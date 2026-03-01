@@ -36,12 +36,32 @@ class MypagesController < ApplicationController
       end
 
       validate_hometowns_input!(@user, user_params[:hometown_prefecture_codes])
+      raise ActiveRecord::Rollback if @user.errors.any?   # ←これを入れる
 
-      if @user.errors.any?
+      codes = Array(user_params[:hometown_prefecture_codes]).map { |v| v.to_s.strip }.reject(&:blank?).map(&:to_i)
+      existing = @user.hometowns.pluck(:prefecture_code)
+
+      to_add = codes - existing
+      to_remove = existing - codes
+
+      if to_remove.any? && !@user.hometowns_editable?
+        unlock_at = @user.hometowns_unlock_at
+        days = ((unlock_at - Time.current) / 1.day).ceil
+        @user.errors.add(:base, t("flash_message.users.hometowns_locked", days: days))
         raise ActiveRecord::Rollback
       end
 
       apply_hometowns!(@user, user_params[:hometown_prefecture_codes])
+
+      # apply_hometowns! の中で user.errors を積んで Rollback する可能性があるので、
+      # ここでもエラーがなければ committed_at 更新
+      if @user.errors.none?
+        if @user.hometowns_committed_at.nil?
+          @user.update!(hometowns_committed_at: Time.current)
+        elsif to_remove.any?
+          @user.update!(hometowns_committed_at: Time.current)
+        end
+      end
     end
 
     if @user.errors.any?
