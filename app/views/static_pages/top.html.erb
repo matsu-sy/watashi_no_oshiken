@@ -14,6 +14,101 @@
       <%= t('top.catch_copy') %>
     </p>
   </div>
+
+  <!-- 3STEP -->
+  <section class="mx-auto max-w-5xl px-6 py-10">
+    <p class="mb-10 text-center text-sm sm:text-base text-slate-500">
+      投稿して、見つけて、リアクション。
+    </p>
+
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-3 text-center">
+
+      <!-- STEP 1 -->
+      <div class="space-y-4 transition duration-300 hover:-translate-y-0.5">
+        <div class="flex justify-center">
+          <!-- ペン -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="#5F7F69"
+              class="w-10 h-10">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M16.862 3.487a2.1 2.1 0 013 3L7.5 18.85 4 20l1.15-3.5L16.862 3.487z" />
+          </svg>
+        </div>
+
+        <div class="mx-auto mt-3 h-[2px] w-8 bg-[#92B099]/40 rounded-full transition duration-300 group-hover:bg-[#92B099]/60"></div>
+
+        <h3 class="text-lg font-semibold text-[#5B5652]">
+          あなたの“推し”を言葉にする
+        </h3>
+        <p class="text-sm text-slate-500">
+          カテゴリを選んで、ひとこと投稿
+        </p>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="space-y-4 transition duration-300 hover:-translate-y-0.5">
+        <div class="flex justify-center">
+          <!-- 芽 -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="#5F7F69"
+              class="w-10 h-10">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 21V10m0 0C9 10 6 7 6 4c3 0 6 3 6 6zm0 0c3 0 6-3 6-6-3 0-6 3-6 6z"/>
+          </svg>
+        </div>
+
+        <div class="mx-auto mt-3 h-[2px] w-8 bg-[#92B099]/40 rounded-full transition duration-300"></div>
+
+        <h3 class="text-lg font-semibold text-[#5B5652]">
+          地元の魅力に出会う
+        </h3>
+        <p class="text-sm text-slate-500">
+          みんなの“推し県”から、新しい発見
+        </p>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="space-y-4 transition duration-300 hover:-translate-y-0.5">
+        <div class="flex justify-center">
+          <!-- 循環 -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="#5F7F69"
+              class="w-10 h-10">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 12a8 8 0 0113.66-5.66M20 12a8 8 0 01-13.66 5.66" />
+          </svg>
+        </div>
+
+        <div class="mx-auto mt-3 h-[2px] w-8 bg-[#92B099]/40 rounded-full transition duration-300"></div>
+
+        <h3 class="text-lg font-semibold text-[#5B5652]">
+          共感が重なっていく
+        </h3>
+
+        <!-- リアクション -->
+        <div class="text-sm text-slate-500">
+          <div class="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <span class="inline-flex items-center gap-1.5">
+              <%= render "shared/icon", name: :unknown, icon_class: "h-4 w-4 stroke-[#5F7F69] fill-white" %>
+              <span>知らなかった</span>
+            </span>
+
+            <span class="inline-flex items-center gap-1.5">
+              <%= render "shared/icon", name: :like, icon_class: "h-4 w-4 stroke-[#5F7F69] fill-white" %>
+              <span>いいね</span>
+            </span>
+
+            <span class="inline-flex items-center gap-1.5">
+              <%= render "shared/icon", name: :wantgo, icon_class: "h-4 w-4 stroke-[#5F7F69] fill-white" %>
+              <span>行ってみたい</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <div class="pt-4 text-center space-y-3">
     <%= link_to t('top.browse_posts'), posts_path,
         class: "inline-flex items-center rounded-full px-7 py-2 text-lg font-medium bg-[#92B099] text-white hover:bg-[#86A78D]" %>
