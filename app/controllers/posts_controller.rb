@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     end
 
     # hometown タブ
-    if current_user.hometowns.exists?
+    if user_signed_in? && current_user.hometowns.exists?
       codes = current_user.hometowns.pluck(:prefecture_code) # => [8, 13, ...]
       @posts = base.where(prefecture_code: codes)
       @hometown_not_registered = false
