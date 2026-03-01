@@ -2,7 +2,25 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [ :index ]
 
   def index
-    @posts = Post.includes(:user, :category, :reactions).order(created_at: :desc)
+    @current_filter = normalize_filter(params[:filter])
+
+    base = Post.includes(:user, :category, :reactions).order(created_at: :desc)
+
+    if @current_filter == "all"
+      @posts = base
+      @hometown_not_registered = false
+      return
+    end
+
+    # hometown タブ
+    if current_user.hometowns.exists?
+      codes = current_user.hometowns.pluck(:prefecture_code) # => [8, 13, ...]
+      @posts = base.where(prefecture_code: codes)
+      @hometown_not_registered = false
+    else
+      @posts = []
+      @hometown_not_registered = true
+    end
   end
 
   def new
@@ -48,5 +66,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:prefecture_code, :category_id, :body, :image, :place_name)
+  end
+
+  def normalize_filter(raw)
+    filter = raw.presence || "hometown"
+    %w[all hometown].include?(filter) ? filter : "hometown"
   end
 end
