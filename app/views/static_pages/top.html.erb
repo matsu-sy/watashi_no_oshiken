@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-5xl px-4 py-14 sm:py-20 text-center">
     <div class="mx-auto w-[360px] sm:w-[480px]">
       <%= image_tag "main_logo1.png",
-            alt: "わたしの推し県",
+            alt: t("app.name"),
             class: "w-full h-auto rounded-[10px] drop-shadow-[0_18px_22px_rgba(0,0,0,0.18)]" %>
     </div>
 
@@ -18,13 +18,13 @@
   <!-- 3STEP -->
   <section class="mx-auto max-w-5xl px-6 py-10">
     <p class="mb-10 text-center text-sm sm:text-base text-slate-500">
-      投稿して、見つけて、リアクション。
+      <%= t("top.steps.lead") %>
     </p>
 
     <div class="grid grid-cols-1 gap-12 md:grid-cols-3 text-center">
 
       <!-- STEP 1 -->
-      <div class="space-y-4 transition duration-300 hover:-translate-y-0.5">
+      <div class="group space-y-4 transition duration-300 hover:-translate-y-0.5">
         <div class="flex justify-center">
           <!-- ペン -->
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -38,10 +38,10 @@
         <div class="mx-auto mt-3 h-[2px] w-8 bg-[#92B099]/40 rounded-full transition duration-300 group-hover:bg-[#92B099]/60"></div>
 
         <h3 class="text-lg font-semibold text-[#5B5652]">
-          あなたの“推し”を言葉にする
+          <%= t("top.steps.step1.title") %>
         </h3>
         <p class="text-sm text-slate-500">
-          カテゴリを選んで、ひとこと投稿
+          <%= t("top.steps.step1.desc") %>
         </p>
       </div>
 
@@ -60,10 +60,10 @@
         <div class="mx-auto mt-3 h-[2px] w-8 bg-[#92B099]/40 rounded-full transition duration-300"></div>
 
         <h3 class="text-lg font-semibold text-[#5B5652]">
-          地元の魅力に出会う
+          <%= t("top.steps.step2.title") %>
         </h3>
         <p class="text-sm text-slate-500">
-          みんなの“推し県”から、新しい発見
+          <%= t("top.steps.step2.desc") %>
         </p>
       </div>
 
@@ -82,7 +82,7 @@
         <div class="mx-auto mt-3 h-[2px] w-8 bg-[#92B099]/40 rounded-full transition duration-300"></div>
 
         <h3 class="text-lg font-semibold text-[#5B5652]">
-          共感が重なっていく
+          <%= t("top.steps.step3.title") %>
         </h3>
 
         <!-- リアクション -->
@@ -90,17 +90,17 @@
           <div class="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <span class="inline-flex items-center gap-1.5">
               <%= render "shared/icon", name: :unknown, icon_class: "h-4 w-4 stroke-[#5F7F69] fill-white" %>
-              <span>知らなかった</span>
+              <span><%= t("top.steps.reactions.unknown") %></span>
             </span>
 
             <span class="inline-flex items-center gap-1.5">
               <%= render "shared/icon", name: :like, icon_class: "h-4 w-4 stroke-[#5F7F69] fill-white" %>
-              <span>いいね</span>
+              <span><%= t("top.steps.reactions.like") %></span>
             </span>
 
             <span class="inline-flex items-center gap-1.5">
               <%= render "shared/icon", name: :wantgo, icon_class: "h-4 w-4 stroke-[#5F7F69] fill-white" %>
-              <span>行ってみたい</span>
+              <span><%= t("top.steps.reactions.wantgo") %></span>
             </span>
           </div>
         </div>
