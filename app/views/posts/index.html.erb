@@ -1,16 +1,18 @@
 <% content_for :page_title, t(".title") %>
 
-<div class="mx-auto flex justify-center gap-10 mb-10">
-  <%= link_to t(".tabs.hometown"),
-      posts_path(filter: "hometown"),
-      class: "block min-w-[220px] text-center pb-2 border-b text-[#5B5652] " +
-             (@current_filter == "hometown" ? "border-[#92B099] border-b-2 font-semibold" : "border-slate-200") %>
+<% if user_signed_in? %>
+  <div class="mx-auto flex justify-center gap-10 mb-10">
+    <%= link_to t(".tabs.hometown"),
+        posts_path(filter: "hometown"),
+        class: "block min-w-[220px] text-center pb-2 border-b text-[#5B5652] " +
+              (@current_filter == "hometown" ? "border-[#92B099] border-b-2 font-semibold" : "border-slate-200") %>
 
-  <%= link_to t(".tabs.all"),
-      posts_path(filter: "all"),
-      class: "block min-w-[220px] text-center pb-2 border-b text-[#5B5652] " +
-             (@current_filter == "all" ? "border-[#92B099] border-b-2 font-semibold" : "border-slate-200") %>
-</div>
+    <%= link_to t(".tabs.all"),
+        posts_path(filter: "all"),
+        class: "block min-w-[220px] text-center pb-2 border-b text-[#5B5652] " +
+              (@current_filter == "all" ? "border-[#92B099] border-b-2 font-semibold" : "border-slate-200") %>
+  </div>
+<% end %>
 
 <% if @current_filter == "hometown" && @hometown_not_registered %>
   <div class="mx-auto max-w-xl rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">

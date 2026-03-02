@@ -32,7 +32,23 @@ ja:
         forgot_password: パスワードをお忘れの方は
         no_account: アカウントをお持ちでない方は
   top:
+    app:
+      name: "わたしの推し県"
     catch_copy: "あなたの県の“隠れた良さ”、他県民は気づいてます！"
+    steps:
+      lead: "投稿して、見つけて、リアクション。"
+      step1:
+        title: "あなたの“推し”を言葉にする"
+        desc: "カテゴリを選んで、ひとこと投稿"
+      step2:
+        title: "地元の魅力に出会う"
+        desc: "みんなの“推し県”から、新しい発見"
+      step3:
+        title: "共感が重なっていく"
+      reactions:
+        unknown: "知らなかった"
+        like: "いいね"
+        wantgo: "行ってみたい"
     browse_posts: "投稿一覧を見る"
   posts:
     new:
