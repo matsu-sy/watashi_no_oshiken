@@ -2,9 +2,18 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [ :index ]
 
   def index
-    @current_filter = normalize_filter(params[:filter])
-
     base = Post.includes(:user, :category, :reactions).order(created_at: :desc)
+
+    # 未ログインは常に all
+    unless user_signed_in?
+      @posts = base
+      @current_filter = "all"
+      @hometown_not_registered = false
+      return
+    end
+
+    # ログイン時のみ filter
+    @current_filter = normalize_filter(params[:filter])
 
     if @current_filter == "all"
       @posts = base
@@ -13,8 +22,8 @@ class PostsController < ApplicationController
     end
 
     # hometown タブ
-    if user_signed_in? && current_user.hometowns.exists?
-      codes = current_user.hometowns.pluck(:prefecture_code) # => [8, 13, ...]
+    if current_user.hometowns.exists?
+      codes = current_user.hometowns.pluck(:prefecture_code)
       @posts = base.where(prefecture_code: codes)
       @hometown_not_registered = false
     else
