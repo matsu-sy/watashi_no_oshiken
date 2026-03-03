@@ -3,104 +3,110 @@
     <div class="mx-auto w-[360px] sm:w-[480px]">
       <%= image_tag "main_logo1.png",
             alt: t("app.name"),
-            class: "w-full h-auto rounded-[10px] drop-shadow-[0_18px_22px_rgba(0,0,0,0.18)]" %>
+            class: "w-full h-auto rounded-[28px]
+                    shadow-[0_12px_30px_rgba(15,23,42,0.08)]
+                    ring-1 ring-black/5
+                    transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)]" %>
     </div>
 
-    <p class="mt-10 text-center font-display
-          text-xl sm:text-2xl md:text-3xl
+    <p class="mt-6 text-center font-display
+          text-2xl sm:text-3xl md:text-4xl
           text-[#5F7F69]
-          tracking-wide leading-relaxed
-          [-webkit-text-stroke:1px_rgba(91,86,82,0.25)]">
-      <%= t('top.catch_copy') %>
+          tracking-wider leading-[1.4]
+          [font-feature-settings:'palt']">
+          <%= t('top.catch_copy') %>
     </p>
   </div>
 
   <!-- 3STEP -->
-  <section class="mx-auto max-w-5xl px-6 py-10">
-    <p class="mb-10 text-center text-sm sm:text-base text-slate-500">
+  <section class="mx-auto max-w-5xl px-6 py-12 mb-10">
+    <p class="mb-14 text-center text-base sm:text-lg">
       <%= t("top.steps.lead") %>
     </p>
 
     <div class="grid grid-cols-1 gap-12 md:grid-cols-3 text-center">
 
       <!-- STEP 1 -->
-      <div class="group space-y-4 transition duration-300 hover:-translate-y-0.5">
+      <div class="group bg-white p-8 rounded-3xl
+                  border border-slate-200/70
+                  shadow-[0_8px_30px_rgba(15,23,42,0.04)]
+                  transition hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(15,23,42,0.06)]
+                  space-y-5">
         <div class="flex justify-center">
           <!-- ペン -->
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              stroke-width="1.5" stroke="#5F7F69"
-              class="w-10 h-10">
+              stroke-width="1.2" stroke="#5F7F69" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110">
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M16.862 3.487a2.1 2.1 0 013 3L7.5 18.85 4 20l1.15-3.5L16.862 3.487z" />
           </svg>
         </div>
 
-        <div class="mx-auto mt-3 h-[2px] w-8 bg-[#92B099]/40 rounded-full transition duration-300 group-hover:bg-[#92B099]/60"></div>
-
-        <h3 class="text-lg font-semibold text-[#5B5652]">
+        <div class="mx-auto h-[2px] w-8 bg-[#92B099]/30 rounded-full transition-all duration-300 group-hover:w-12 group-hover:bg-[#92B099]"></div>
+        <h3 class="text-lg font-semibold text-[#5B5652] tracking-wide">
           <%= t("top.steps.step1.title") %>
         </h3>
-        <p class="text-sm text-slate-500">
+        <p class="text-sm text-[#5B5652] leading-relaxed">
           <%= t("top.steps.step1.desc") %>
         </p>
-      </div>
+        </div>
 
       <!-- STEP 2 -->
-      <div class="space-y-4 transition duration-300 hover:-translate-y-0.5">
+      <div class="group bg-white p-8 rounded-3xl
+                  border border-slate-200/70
+                  shadow-[0_8px_30px_rgba(15,23,42,0.04)]
+                  transition hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(15,23,42,0.06)]
+                  space-y-5">
         <div class="flex justify-center">
           <!-- 芽 -->
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              stroke-width="1.5" stroke="#5F7F69"
-              class="w-10 h-10">
+              stroke-width="1.2" stroke="#5F7F69" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110">
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M12 21V10m0 0C9 10 6 7 6 4c3 0 6 3 6 6zm0 0c3 0 6-3 6-6-3 0-6 3-6 6z"/>
           </svg>
         </div>
 
-        <div class="mx-auto mt-3 h-[2px] w-8 bg-[#92B099]/40 rounded-full transition duration-300"></div>
-
-        <h3 class="text-lg font-semibold text-[#5B5652]">
+        <div class="mx-auto h-[2px] w-8 bg-[#92B099]/30 rounded-full transition-all duration-300 group-hover:w-12 group-hover:bg-[#92B099]"></div>
+        <h3 class="text-lg font-semibold text-[#5B5652] tracking-wide">
           <%= t("top.steps.step2.title") %>
         </h3>
-        <p class="text-sm text-slate-500">
+        <p class="text-sm text-[#5B5652] leading-relaxed">
           <%= t("top.steps.step2.desc") %>
         </p>
-      </div>
+        </div>
 
       <!-- STEP 3 -->
-      <div class="space-y-4 transition duration-300 hover:-translate-y-0.5">
+      <div class="group bg-white p-8 rounded-3xl
+                  border border-slate-200/70
+                  shadow-[0_8px_30px_rgba(15,23,42,0.04)]
+                  transition hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(15,23,42,0.06)]
+                  space-y-5">
         <div class="flex justify-center">
           <!-- 循環 -->
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              stroke-width="1.5" stroke="#5F7F69"
-              class="w-10 h-10">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 12a8 8 0 0113.66-5.66M20 12a8 8 0 01-13.66 5.66" />
+              stroke-width="1.2" stroke="#5F7F69"
+              class="w-12 h-12 transition-transform duration-500 group-hover:scale-110">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
           </svg>
         </div>
-
-        <div class="mx-auto mt-3 h-[2px] w-8 bg-[#92B099]/40 rounded-full transition duration-300"></div>
-
-        <h3 class="text-lg font-semibold text-[#5B5652]">
+        <div class="mx-auto h-[2px] w-8 bg-[#92B099]/30 rounded-full transition-all duration-300 group-hover:w-12 group-hover:bg-[#92B099]"></div>
+        <h3 class="text-lg font-semibold text-[#5B5652] tracking-wide">
           <%= t("top.steps.step3.title") %>
         </h3>
 
         <!-- リアクション -->
-        <div class="text-sm text-slate-500">
-          <div class="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-            <span class="inline-flex items-center gap-1.5">
-              <%= render "shared/icon", name: :unknown, icon_class: "h-4 w-4 stroke-[#5F7F69] fill-white" %>
-              <span><%= t("top.steps.reactions.unknown") %></span>
+        <div class="pt-2 text-sm text-[#5B5652]">
+          <div class="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+            <span class="inline-flex items-center gap-1.5 bg-[#FAF8F5] px-3 py-1.5 rounded-full">
+              <%= render "shared/icon", name: :unknown, icon_class: "h-3.5 w-3.5 stroke-[#5F7F69] fill-transparent" %>
+              <span class="text-xs"><%= t("top.steps.reactions.unknown") %></span>
             </span>
-
-            <span class="inline-flex items-center gap-1.5">
-              <%= render "shared/icon", name: :like, icon_class: "h-4 w-4 stroke-[#5F7F69] fill-white" %>
-              <span><%= t("top.steps.reactions.like") %></span>
+            <span class="inline-flex items-center gap-1.5 bg-[#FAF8F5] px-3 py-1.5 rounded-full">
+              <%= render "shared/icon", name: :like, icon_class: "h-3.5 w-3.5 stroke-[#5F7F69] fill-transparent" %>
+              <span class="text-xs"><%= t("top.steps.reactions.like") %></span>
             </span>
-
-            <span class="inline-flex items-center gap-1.5">
-              <%= render "shared/icon", name: :wantgo, icon_class: "h-4 w-4 stroke-[#5F7F69] fill-white" %>
-              <span><%= t("top.steps.reactions.wantgo") %></span>
+            <span class="inline-flex items-center gap-1.5 bg-[#FAF8F5] px-3 py-1.5 rounded-full">
+              <%= render "shared/icon", name: :wantgo, icon_class: "h-3.5 w-3.5 stroke-[#5F7F69] fill-transparent" %>
+              <span class="text-xs"><%= t("top.steps.reactions.wantgo") %></span>
             </span>
           </div>
         </div>
@@ -109,9 +115,16 @@
     </div>
   </section>
 
-  <div class="pt-4 text-center space-y-3">
+  <div class="py-10 text-center space-y-4">
     <%= link_to t('top.browse_posts'), posts_path,
-        class: "inline-flex items-center rounded-full px-7 py-2 text-lg font-medium bg-[#92B099] text-white hover:bg-[#86A78D]" %>
+        class: "inline-flex items-center justify-center rounded-full
+                px-10 py-3.5 text-lg font-semibold
+                bg-[#92B099] text-white
+                ring-1 ring-black/5
+                shadow-[0_10px_25px_rgba(15,23,42,0.08)]
+                transition hover:bg-[#86A78D]
+                hover:shadow-[0_14px_34px_rgba(15,23,42,0.10)]
+                active:translate-y-[1px]" %>
   </div>
 
 </main>
