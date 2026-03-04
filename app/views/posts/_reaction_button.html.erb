@@ -2,7 +2,20 @@
 
 <% base = "inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm transition" %>
 <% normal = "border-slate-200 text-slate-600 hover:bg-slate-50" %>
-<% active = "border-slate-300 text-slate-800 bg-white ring-2 ring-[#92B099]" %>
+<% active_by_type =
+  case reaction_type.to_s
+  when "unknown" 
+    "border-[#92B099]/55 text-[#5F7F69] bg-[#92B099]/20"
+  when "like" 
+    "border-[#D9A7B5]/60 text-[#8A4B5C] bg-[#F6E9ED]"
+  when "wantgo" 
+    "border-[#9FB7C9]/65 text-[#3E5E73] bg-[#EAF1F6]"
+  else
+    "border-[#92B099]/40 text-[#5F7F69] bg-[#92B099]/12 ring-1 ring-[#92B099]/30"
+  end
+%>
+
+<% active = active_by_type %>
 <% disabled = "border-slate-200 text-slate-400 bg-slate-50 cursor-not-allowed" %>
 
 <% content = capture do %>
