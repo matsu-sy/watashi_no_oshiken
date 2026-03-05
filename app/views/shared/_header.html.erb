@@ -1,4 +1,4 @@
-<header class="fixed top-0 inset-x-0 z-50 bg-[#FFFEF9] border-b border-[#5B5652]/40">
+<header class="fixed top-0 inset-x-0 z-50 bg-[#FFFEF9]/90 backdrop-blur supports-[backdrop-filter]:bg-[#FFFEF9]/70">
   <div class="mx-auto max-w-6xl px-6 py-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <%= link_to root_path, class: "inline-flex items-center" do %>
@@ -12,15 +12,51 @@
       <% if user_signed_in? %>
         <%= link_to t('header.create_post'), new_post_path,
               class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-[#92B099] text-white hover:bg-[#86A78D]" %>
+        <!-- マイページ -->
         <%= link_to mypage_path,
-              class: "inline-flex items-center rounded-full transition hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#92B099]/40" do %>
-          <%= render "shared/avatar", user: current_user, size_class: "h-9 w-9", variant_px: 72, ring: false %>
+              class: "group relative inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-[#5B5652]/5 transition",
+              aria: { label: t("header.mypage") } do %>
+
+          <%= render "shared/avatar",
+                user: current_user,
+                size_class: "h-9 w-9",
+                variant_px: 72,
+                ring: false %>
+
+          <!-- tooltip -->
+          <span class="pointer-events-none absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap
+                      rounded-md bg-[#5B5652] px-2 py-1 text-xs text-white opacity-0
+                      shadow-sm transition group-hover:opacity-100">
+            <%= t("header.mypage") %>
+          </span>
         <% end %>
-        <%= button_to t('header.sign_out'),
-              destroy_user_session_path,
+        <!-- ログアウト -->
+        <%= button_to destroy_user_session_path,
               method: :delete,
               data: { turbo: false },
-              class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium border border-[#5B5652] text-[#5B5652] hover:bg-[#5B5652]/5" %>
+              class: "group relative inline-flex h-10 w-10 items-center justify-center text-[#5B5652] hover:bg-[#5B5652]/5 rounded-full transition",
+              aria: { label: t("header.sign_out") } do %>
+          <svg xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <path d="M16 17l5-5-5-5"/>
+            <path d="M21 12H9"/>
+          </svg>
+
+          <!-- tooltip -->
+          <span class="pointer-events-none absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap
+                      rounded-md bg-[#5B5652] px-2 py-1 text-xs text-white opacity-0
+                      shadow-sm transition group-hover:opacity-100">
+            <%= t("header.sign_out") %>
+          </span>
+        <% end %>
       <% else %>
         <%= link_to t('header.sign_up'), new_user_registration_path,
               class: "inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-[#92B099] text-white hover:bg-[#86A78D]" %>
