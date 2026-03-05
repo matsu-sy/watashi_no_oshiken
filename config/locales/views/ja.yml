@@ -66,6 +66,7 @@ ja:
       empty: "まだ投稿がありません。"
     show:
       title: 投稿詳細
+      edit: 編集
     edit:
       title: 編集
       delete_button: 削除
