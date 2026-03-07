@@ -26,15 +26,22 @@
   <body class="m-0 min-h-screen pt-16 font-sans bg-[#FFFEF9] text-[#5B5652]">
     <%= render 'shared/header' %>
 
-    <%# ページタイトル帯（ページ側から content_for で渡す） %>
+    <%# ページタイトル帯 %>
     <% if content_for?(:page_title) %>
       <%= render "shared/page_header", title: yield(:page_title), subtitle: content_for?(:page_subtitle) ? yield(:page_subtitle) : nil %>
     <% end %>
 
     <main>
-      <%= render "shared/page_container" do %>
-        <%= render 'shared/flash_message' %>
+      <% if content_for?(:full_bleed) %>
+        <div class="pt-4 px-4 sm:px-36">
+          <%= render "shared/flash_message" %>
+        </div>
         <%= yield %>
+      <% else %>
+        <%= render "shared/page_container" do %>
+          <%= render 'shared/flash_message' %>
+          <%= yield %>
+        <% end %>
       <% end %>
     </main>
 

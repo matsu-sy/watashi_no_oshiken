@@ -1,22 +1,25 @@
+<% content_for :full_bleed, true %>
 <main class="min-h-screen w-full">
-  <div class="mx-auto max-w-5xl px-4 py-14 sm:py-20 text-center">
-    <div class="mx-auto w-[360px] sm:w-[480px]">
-      <%= image_tag "main_logo1.png",
-            alt: t("app.name"),
-            class: "w-full h-auto rounded-[28px]
-                    shadow-[0_12px_30px_rgba(15,23,42,0.08)]
-                    ring-1 ring-black/5
-                    transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)]" %>
-    </div>
+  <section class="bg-[#E9E6DF] py-10">
+    <div class="mx-auto max-w-5xl px-4 py-14 sm:py-20 text-center">
+      <div class="mx-auto w-[360px] sm:w-[480px]">
+        <%= image_tag "main_logo1.png",
+              alt: t("app.name"),
+              class: "w-full h-auto rounded-[28px]
+                      shadow-[0_12px_30px_rgba(15,23,42,0.08)]
+                      ring-1 ring-black/5
+                      transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)]" %>
+      </div>
 
-    <p class="mt-6 text-center font-display
-          text-2xl sm:text-3xl md:text-4xl
-          text-[#5F7F69]
-          tracking-wider leading-[1.4]
-          [font-feature-settings:'palt']">
-          <%= t('top.catch_copy') %>
-    </p>
-  </div>
+      <p class="mt-6 text-center font-display
+            text-2xl sm:text-3xl md:text-4xl
+            text-[#5F7F69]
+            tracking-wider leading-[1.4]
+            [font-feature-settings:'palt']">
+            <%= t('top.catch_copy') %>
+      </p>
+    </div>
+  </section>
 
   <!-- 3STEP -->
   <section class="mx-auto max-w-5xl px-6 py-12 mb-10">
