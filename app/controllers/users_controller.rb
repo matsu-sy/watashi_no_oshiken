@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def show
-    @user = User.includes(hometowns: :prefecture).find(params[:id])
-    @hometowns = @user.hometowns
+    @user = User.find(params[:id])
   end
 end
