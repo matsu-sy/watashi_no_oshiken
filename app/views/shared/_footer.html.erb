@@ -1,21 +1,31 @@
-<footer class="bg-[#EEF3F0] border-t border-[#5B5652]/30">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-4">
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:items-center">
-      <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#5B5652]/70">
-        <%= link_to t('footer.terms_of_service'), "#",
-              class: "transition-colors hover:text-[#5B5652]" %>
-        <%= link_to t('footer.privacy_policy'), "#",
-              class: "transition-colors hover:text-[#5B5652]" %>
-        <%= link_to t('footer.contact'), "#",
-              class: "transition-colors hover:text-[#5B5652]" %>
-      </nav>
+<footer class="mt-16 bg-[#FFFEF9] border-t border-[#5B5652]/30">
+  <div class="mx-auto max-w-6xl px-6 py-6 flex flex-col items-center gap-4">
 
-      <p class="text-sm text-[#5B5652]/70 sm:text-center">
-        <%= t('footer.copyright') %>
-      </p>
+    <nav class="flex flex-col items-center gap-2 text-sm text-[#5B5652]/50
+                sm:flex-row sm:gap-6">
 
-      <div class="hidden sm:block"></div>
-      
-    </div>
+      <% items = [
+        [t("footer.terms_of_service"), "準備中"],
+        [t("footer.privacy_policy"), "準備中"],
+        [t("footer.contact"), "準備中"],
+      ] %>
+
+      <% items.each do |label, tip| %>
+        <span class="group relative inline-flex items-center select-none cursor-not-allowed">
+          <span class="underline-offset-4"><%= label %></span>
+
+          <span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                       rounded-md bg-[#5B5652] px-2 py-1 text-xs text-white opacity-0
+                       shadow-sm transition group-hover:opacity-100">
+            <%= tip %>
+          </span>
+        </span>
+      <% end %>
+    </nav>
+
+    <p class="text-sm text-[#5B5652]/70 text-center">
+      <%= t("footer.copyright") %>
+    </p>
+
   </div>
 </footer>

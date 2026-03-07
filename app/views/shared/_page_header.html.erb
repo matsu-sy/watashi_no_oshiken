@@ -1,14 +1,18 @@
-<%# locals: title: , subtitle: (optional) %>
-<section class="bg-[#D4CAB3]/70">
-  <div class="mx-auto max-w-5xl px-4 py-8 text-center">
-    <h1 class="text-xl sm:text-2xl font-semibold tracking-[0.3em] text-[#5B5652]">
+<%# locals: title:, subtitle: (optional) %>
+<section class="bg-[#E9E6DF]">
+  <div class="mx-auto max-w-2xl px-4 py-10 text-center">
+
+    <h1 class="text-xl sm:text-2xl font-semibold tracking-[0.2em] text-[#5B5652]">
       <%= title %>
     </h1>
 
+    <div class="mx-auto mt-2 h-[2px] w-9 rounded-full bg-[#92B099]/70"></div>
+
     <% if local_assigns[:subtitle].present? %>
-      <p class="mt-2 text-sm text-slate-600">
+      <p class="mt-4 text-sm text-slate-500">
         <%= subtitle %>
       </p>
     <% end %>
+
   </div>
 </section>

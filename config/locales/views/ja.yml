@@ -39,7 +39,7 @@ ja:
       lead: "投稿して、見つけて、リアクション。"
       step1:
         title: "あなたの“推し”を言葉にする"
-        desc: "カテゴリを選んで、ひとこと投稿"
+        desc: "県×カテゴリを選んで、ひとこと投稿"
       step2:
         title: "地元の魅力に出会う"
         desc: "みんなの“推し県”から、新しい発見"
@@ -66,6 +66,7 @@ ja:
       empty: "まだ投稿がありません。"
     show:
       title: 投稿詳細
+      edit: 編集
     edit:
       title: 編集
       delete_button: 削除

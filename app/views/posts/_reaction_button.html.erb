@@ -1,19 +1,37 @@
-<% reacted = user_signed_in? && current_user.reacted_to?(post, reaction_type) %>
+<% rt = reaction_type.to_s %>
+<% reacted =
+  user_signed_in? &&
+  post.reactions.any? { |r| r.user_id == current_user.id && r.reaction_type.to_s == rt }
+%>
 
 <% base = "inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm transition" %>
-<% normal = "border-slate-200 text-slate-600 hover:bg-slate-50" %>
-<% active = "border-slate-300 text-slate-800 bg-white ring-2 ring-[#92B099]" %>
+<% normal = "border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300" %>
+
+<% active =
+  case rt
+  when "unknown"
+    "border-[#92B099]/55 text-[#5F7F69] bg-[#92B099]/20"
+  when "like"
+    "border-[#D9A7B5]/60 text-[#8A4B5C] bg-[#F6E9ED]"
+  when "wantgo"
+    "border-[#9FB7C9]/65 text-[#3E5E73] bg-[#EAF1F6]"
+  else
+    "border-[#92B099]/40 text-[#5F7F69] bg-[#92B099]/12 ring-1 ring-[#92B099]/30"
+  end
+%>
+
 <% disabled = "border-slate-200 text-slate-400 bg-slate-50 cursor-not-allowed" %>
+<% count_class = reacted ? "text-current/80" : "text-slate-500" %>
 
 <% content = capture do %>
-  <span class="inline-flex items-center">
+  <span class="inline-flex items-center text-current">
     <%= yield %>
   </span>
-  <span class="text-xs text-slate-500"><%= post.reaction_count(reaction_type) %></span>
+  <span class="text-xs <%= count_class %>"><%= post.reaction_count(rt) %></span>
 <% end %>
 
 <% if user_signed_in? %>
-  <%= button_to post_reactions_path(post, reaction_type: reaction_type),
+  <%= button_to post_reactions_path(post, reaction_type: rt),
       method: (reacted ? :delete : :post),
       class: "#{base} #{reacted ? active : normal}" do %>
     <%= content %>
