@@ -121,6 +121,11 @@
 - Render/web
 - Neon/DB
 
+**画像関連**
+- Active Storage /画像アップロード
+- image_processing /画像リサイズ
+- Cloudinary /画像ストレージ
+
 **その他**
 
 - Google Maps API
@@ -131,7 +136,6 @@
 - OmniAuth + Google OAuth /Google認証
 - Kaminari  /ページネーション
 - jp_prefecture /都道府県管理
-- image_processing /画像処理
 - Geocoder /地点情報取得
 
 
