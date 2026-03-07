@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get "hometowns/create"
-  get "hometowns/update"
-  get "hometowns/destroy"
   devise_for :users
 
   authenticated :user do
