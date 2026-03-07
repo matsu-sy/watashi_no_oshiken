@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  get "hometowns/create"
-  get "hometowns/update"
-  get "hometowns/destroy"
   devise_for :users
 
   authenticated :user do
     root "posts#index", as: :authenticated_root
   end
 
+    resources :users, only: %i[show]
     resource :mypage, only: %i[show edit update] do
       delete :avatar, to: "mypages#destroy_avatar"
     end

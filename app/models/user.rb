@@ -55,4 +55,10 @@ class User < ApplicationRecord
     return nil if hometowns_committed_at.nil?
     hometowns_committed_at + HOMETOWNS_COOLDOWN
   end
+
+  def public_hometowns
+    return Hometown.none unless hometown_visibility?
+
+    hometowns.order(:created_at)
+  end
 end

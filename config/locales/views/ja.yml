@@ -67,6 +67,7 @@ ja:
     show:
       title: 投稿詳細
       edit: 編集
+      back_to_list: 一覧に戻る
     edit:
       title: 編集
       delete_button: 削除
@@ -117,6 +118,15 @@ ja:
       hometown_help: "出身地を3つまで登録できます"
       hometown_cooldown_help: "※出身地は変更後7日間は再変更できません"
       hometown_empty: "登録がありません"
+      back: 戻る
+  users:
+    show:    
+      title: ユーザー
+      profile: プロフィール
+      name: お名前
+      hometown: 出身地
+      visible: 公開
+      hidden: 非公開
       back: 戻る
   header:
     sign_up: 新規登録
