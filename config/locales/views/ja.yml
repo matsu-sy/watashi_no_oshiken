@@ -6,7 +6,7 @@ ja:
   flash_message:
     users:
       avatar_deleted: "アイコン画像を削除しました"
-      hometowns_locked: "出身地は変更後%{days}日間は再変更できません"
+      hometowns_locked: "出身地はあと%{days}日で変更可能です。（変更可能日: %{date}）"
     posts:
       create:
         success: "投稿しました"

@@ -47,7 +47,8 @@ class MypagesController < ApplicationController
       if to_remove.any? && !@user.hometowns_editable?
         unlock_at = @user.hometowns_unlock_at
         days = ((unlock_at - Time.current) / 1.day).ceil
-        @user.errors.add(:base, t("flash_message.users.hometowns_locked", days: days))
+        formatted_date = unlock_at.strftime("%Y/%m/%d")
+        @user.errors.add(:base, t("flash_message.users.hometowns_locked", days: days, date: formatted_date))
         raise ActiveRecord::Rollback
       end
 
