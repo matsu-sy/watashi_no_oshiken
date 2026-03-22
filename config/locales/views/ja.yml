@@ -1,4 +1,6 @@
 ja:
+  defaults:
+    title: "わたしの推し県"
   helpers:
     submit:
       create: 投稿する
