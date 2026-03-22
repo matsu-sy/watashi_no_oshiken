@@ -1,16 +1,41 @@
 <div class="flex gap-2">
   <!-- 知らなかった：lightbulb -->
-  <%= render "posts/reaction_button", post: post, reaction_type: :unknown do %>
-    <%= render "shared/icon", name: :unknown, icon_class: "reaction-icon" %>
-  <% end %>
+  <div class="group/reaction relative">
+    <%= render "posts/reaction_button", post: post, reaction_type: :unknown, tooltip: t("reactions.labels.unknown") do %>
+      <%= render "shared/icon", name: :unknown, icon_class: "reaction-icon" %>
+    <% end %>
+
+    <!-- tooltip -->
+    <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap
+                rounded-md bg-[#5B5652] px-2 py-1 text-xs text-white opacity-0
+                shadow-sm transition group-hover/reaction:opacity-100 z-10">
+      <%= t("reactions.labels.unknown") %>
+    </span>
+  </div>
 
   <!-- いいね：heart -->
-  <%= render "posts/reaction_button", post: post, reaction_type: :like do %>
-    <%= render "shared/icon", name: :like, icon_class: "reaction-icon" %>
-  <% end %>
+  <div class="group/reaction relative">
+    <%= render "posts/reaction_button", post: post, reaction_type: :like, tooltip: t("reactions.labels.like") do %>
+      <%= render "shared/icon", name: :like, icon_class: "reaction-icon" %>
+    <% end %>
+    <!-- tooltip -->
+    <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap
+                rounded-md bg-[#5B5652] px-2 py-1 text-xs text-white opacity-0
+                shadow-sm transition group-hover/reaction:opacity-100">
+      <%= t("reactions.labels.like") %>
+    </span>
+  </div>
 
   <!-- 行ってみたい：map pin -->
-  <%= render "posts/reaction_button", post: post, reaction_type: :wantgo do %>
-    <%= render "shared/icon", name: :wantgo, icon_class: "reaction-icon" %>
-  <% end %>
+  <div class="group/reaction relative">
+    <%= render "posts/reaction_button", post: post, reaction_type: :wantgo, tooltip: t("reactions.labels.wantgo") do %>
+      <%= render "shared/icon", name: :wantgo, icon_class: "reaction-icon" %>
+    <% end %>
+    <!-- tooltip -->
+    <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap
+                rounded-md bg-[#5B5652] px-2 py-1 text-xs text-white opacity-0
+                shadow-sm transition group-hover/reaction:opacity-100">
+      <%= t("reactions.labels.wantgo") %>
+    </span>
+  </div>
 </div>
