@@ -38,15 +38,15 @@ ja:
       name: "わたしの推し県"
     catch_copy: "あなたの県の“隠れた良さ”、他県民は気づいてます！"
     description:
-      line1: "「わたしの推し県」は、地元以外の好きな都道府県の魅力を投稿して、<br>みんなで新しい発見を楽しむアプリです。"
-      line2: "旅先で出会った景色や食べもの、誰かにすすめたくなる“推しポイント”を共有できます。"
+      line1: "「わたしの推し県」は、他県民が“あなたの県の隠れた魅力”を投稿・共有するアプリです。"
+      line2: "外からの視点で地元の魅力を再発見し、出身地への愛着や誇りを育てていきます。"
     steps:
       lead: "投稿して、見つけて、リアクション。"
       step1:
         title: "あなたの“推し”を言葉にする"
         desc: "県×カテゴリを選んで、ひとこと投稿"
       step2:
-        title: "地元の魅力に出会う"
+        title: "外から見た魅力に出会う"
         desc: "みんなの“推し県”から、新しい発見"
       step3:
         title: "共感が重なっていく"
@@ -57,11 +57,11 @@ ja:
     browse_posts: "投稿一覧を見る"
   posts:
     new:
-      title: 投稿
+      title: 推し県を投稿
       subtitle: "あなたの推し県の魅力を教えてください"
     index:
       title: みんなの推し県
-      subtitle: "みんなが見つけた推し県の魅力を見てみよう"
+      subtitle: "みんなが見つけた推し県の魅力が集まります"
       login_required_tooltip: "ログインして詳細を見る"
       tabs:
         hometown: 地元の投稿
@@ -72,11 +72,11 @@ ja:
         cta: 出身地を登録する
       empty: "まだ投稿がありません。"
     show:
-      title: 投稿詳細
+      title: 投稿の詳細
       edit: 編集
       back_to_list: 一覧に戻る
     edit:
-      title: 編集
+      title: 投稿の編集
       delete_button: 削除
       confirm_delete_title: 投稿を削除してよろしいですか？
       confirm_delete_body: 一度削除すると元に戻せません。
@@ -85,7 +85,7 @@ ja:
     form:
       errors_title: "入力内容をご確認ください（%{count}件）"
       required_mark: "*"
-      prefecture_help: "※ あなたの出身県以外の「推し県」を選んでください"
+      prefecture_help: "※ あなたの出身県以外から、推し県を選んでください"
       prefecture_prompt: 選択してください
       category_prompt: 選択してください
       body_placeholder: "例：路地裏のパン屋さんが美味しかった。地元の人が優しかった…など"
