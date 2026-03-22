@@ -11,13 +11,13 @@ ja:
       hometowns_locked: "出身地はあと%{days}日で変更可能です。（変更可能日: %{date}）"
     posts:
       create:
-        success: "投稿しました"
+        success: "推し県を投稿しました"
         failure: "投稿できませんでした"
       update:
-        success: "更新しました"
+        success: "内容を更新しました"
         failure: "更新できませんでした"
       deleted:
-        success: "削除しました"
+        success: "投稿を削除しました"
   common:
     here: こちら
   devise:
@@ -37,6 +37,9 @@ ja:
     app:
       name: "わたしの推し県"
     catch_copy: "あなたの県の“隠れた良さ”、他県民は気づいてます！"
+    description:
+      line1: "「わたしの推し県」は、地元以外の好きな都道府県の魅力を投稿して、<br>みんなで新しい発見を楽しむアプリです。"
+      line2: "旅先で出会った景色や食べもの、誰かにすすめたくなる“推しポイント”を共有できます。"
     steps:
       lead: "投稿して、見つけて、リアクション。"
       step1:
@@ -56,11 +59,11 @@ ja:
     new:
       title: 投稿
     index:
-      title: 投稿一覧
+      title: みんなの推し県
       login_required_tooltip: "ログインして詳細を見る"
       tabs:
-        hometown: 出身地の投稿一覧
-        all: すべての投稿一覧
+        hometown: 地元の投稿
+        all: 全国の投稿
       hometown_prompt:
         title: "あなたの出身地の投稿を見てみませんか？"
         description: "出身地を登録すると、その県の投稿一覧が表示されます。"
@@ -83,7 +86,7 @@ ja:
       prefecture_help: "※ あなたの出身県以外の「推し県」を選んでください"
       prefecture_prompt: 選択してください
       category_prompt: 選択してください
-      body_placeholder: "例：駅前の定食屋さんが安くて美味しかった。地元の人が優しかった…など"
+      body_placeholder: "例：路地裏のパン屋さんが美味しかった。地元の人が優しかった…など"
       image_label: 画像
       current_image: 現在の画像
       image_help: "※ 変更する場合のみ選択してください（未選択のままでも現在の画像は保持されます）"
@@ -101,7 +104,7 @@ ja:
       visible: 公開
       hidden: 非公開
       hometown_empty: "登録がありません"
-      reacted_posts: リアクション一覧
+      reacted_posts: リアクションした投稿
       reacted_posts_empty: "リアクションした投稿はありません"
     edit:
       title: プロフィール編集
