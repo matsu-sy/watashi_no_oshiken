@@ -25,7 +25,7 @@ ja:
       category:
         name: カテゴリ名
       post:
-        body: コメント
+        body: 推しポイント
         prefecture_code: 都道府県
         category: カテゴリ
         place_name: 場所名

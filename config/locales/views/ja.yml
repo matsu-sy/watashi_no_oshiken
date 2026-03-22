@@ -11,13 +11,13 @@ ja:
       hometowns_locked: "出身地はあと%{days}日で変更可能です。（変更可能日: %{date}）"
     posts:
       create:
-        success: "投稿しました"
+        success: "推し県を投稿しました"
         failure: "投稿できませんでした"
       update:
-        success: "更新しました"
+        success: "内容を更新しました"
         failure: "更新できませんでした"
       deleted:
-        success: "削除しました"
+        success: "投稿を削除しました"
   common:
     here: こちら
   devise:
@@ -37,13 +37,16 @@ ja:
     app:
       name: "わたしの推し県"
     catch_copy: "あなたの県の“隠れた良さ”、他県民は気づいてます！"
+    description:
+      line1: "「わたしの推し県」は、他県民が“あなたの県の隠れた魅力”を投稿・共有するアプリです。"
+      line2: "外からの視点で地元の魅力を再発見し、出身地への愛着や誇りを育てていきます。"
     steps:
       lead: "投稿して、見つけて、リアクション。"
       step1:
         title: "あなたの“推し”を言葉にする"
         desc: "県×カテゴリを選んで、ひとこと投稿"
       step2:
-        title: "地元の魅力に出会う"
+        title: "外から見た魅力に出会う"
         desc: "みんなの“推し県”から、新しい発見"
       step3:
         title: "共感が重なっていく"
@@ -54,24 +57,26 @@ ja:
     browse_posts: "投稿一覧を見る"
   posts:
     new:
-      title: 投稿
+      title: 推し県を投稿
+      subtitle: "あなたの推し県の魅力を教えてください"
     index:
-      title: 投稿一覧
+      title: みんなの推し県
+      subtitle: "みんなが見つけた推し県の魅力が集まります"
       login_required_tooltip: "ログインして詳細を見る"
       tabs:
-        hometown: 出身地の投稿一覧
-        all: すべての投稿一覧
+        hometown: 地元の投稿
+        all: 全国の投稿
       hometown_prompt:
         title: "あなたの出身地の投稿を見てみませんか？"
         description: "出身地を登録すると、その県の投稿一覧が表示されます。"
         cta: 出身地を登録する
       empty: "まだ投稿がありません。"
     show:
-      title: 投稿詳細
+      title: 投稿の詳細
       edit: 編集
       back_to_list: 一覧に戻る
     edit:
-      title: 編集
+      title: 投稿の編集
       delete_button: 削除
       confirm_delete_title: 投稿を削除してよろしいですか？
       confirm_delete_body: 一度削除すると元に戻せません。
@@ -80,10 +85,10 @@ ja:
     form:
       errors_title: "入力内容をご確認ください（%{count}件）"
       required_mark: "*"
-      prefecture_help: "※ あなたの出身県以外の「推し県」を選んでください"
+      prefecture_help: "※ あなたの出身県以外から、推し県を選んでください"
       prefecture_prompt: 選択してください
       category_prompt: 選択してください
-      body_placeholder: "例：駅前の定食屋さんが安くて美味しかった。地元の人が優しかった…など"
+      body_placeholder: "例：路地裏のパン屋さんが美味しかった。地元の人が優しかった…など"
       image_label: 画像
       current_image: 現在の画像
       image_help: "※ 変更する場合のみ選択してください（未選択のままでも現在の画像は保持されます）"
@@ -101,10 +106,11 @@ ja:
       visible: 公開
       hidden: 非公開
       hometown_empty: "登録がありません"
-      reacted_posts: リアクション一覧
+      reacted_posts: リアクションした投稿
       reacted_posts_empty: "リアクションした投稿はありません"
     edit:
       title: プロフィール編集
+      subtitle: "お名前や出身地の公開設定を変更できます"
       profile: プロフィール
       error_message: "入力内容をご確認ください（%{count}件）"
       name: お名前
@@ -130,6 +136,11 @@ ja:
       visible: 公開
       hidden: 非公開
       back: 戻る
+  reactions:
+    labels:
+      unknown: "知らなかった"
+      like: "いいね"
+      wantgo: "行ってみたい"
   header:
     sign_up: 新規登録
     sign_in: ログイン
