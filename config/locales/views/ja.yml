@@ -58,8 +58,10 @@ ja:
   posts:
     new:
       title: 投稿
+      subtitle: "あなたの推し県の魅力を教えてください"
     index:
       title: みんなの推し県
+      subtitle: "みんなが見つけた推し県の魅力を見てみよう"
       login_required_tooltip: "ログインして詳細を見る"
       tabs:
         hometown: 地元の投稿
@@ -108,6 +110,7 @@ ja:
       reacted_posts_empty: "リアクションした投稿はありません"
     edit:
       title: プロフィール編集
+      subtitle: "お名前や出身地の公開設定を変更できます"
       profile: プロフィール
       error_message: "入力内容をご確認ください（%{count}件）"
       name: お名前
