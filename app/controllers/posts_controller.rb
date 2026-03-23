@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [ :index ]
+  before_action :set_post, only: %i[show edit update destroy destroy_image]
+  before_action :authorize_post!, only: %i[edit update destroy destroy_image]
 
   def index
     base = Post.includes(:user, :category, :reactions).order(created_at: :desc)
@@ -71,6 +73,12 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: t("flash_message.posts.deleted.success", item: Post.model_name.human)
   end
 
+  def destroy_image
+    @post.image.purge_later if @post.image.attached?
+    redirect_to edit_post_path(@post), notice: t("flash_message.posts.image_deleted.success")
+  end
+
+
   private
 
   def post_params
@@ -80,5 +88,13 @@ class PostsController < ApplicationController
   def normalize_filter(raw)
     filter = raw.presence || "hometown"
     %w[all hometown].include?(filter) ? filter : "hometown"
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def authorize_post!
+    redirect_to posts_path, alert: t("flash_message.posts.not_authorized") unless current_user.own?(@post)
   end
 end

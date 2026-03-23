@@ -18,6 +18,8 @@ ja:
         failure: "更新できませんでした"
       deleted:
         success: "投稿を削除しました"
+      image_deleted: 
+        success: "投稿画像を削除しました"
   common:
     here: こちら
   devise:
@@ -91,6 +93,8 @@ ja:
       body_placeholder: "例：路地裏のパン屋さんが美味しかった。地元の人が優しかった…など"
       image_label: 画像
       current_image: 現在の画像
+      delete_image: 画像を削除
+      delete_image_confirm: 画像を削除しますか？
       image_help: "※ 変更する場合のみ選択してください（未選択のままでも現在の画像は保持されます）"
       place_label: 場所名
       place_placeholder: "例：ひたち海浜公園 / ○○駅周辺 / △△温泉 など"
