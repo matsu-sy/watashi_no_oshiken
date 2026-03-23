@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   root "static_pages#top"
 
   resources :posts, only: %i[index new create show edit update destroy] do
+    member do
+      delete :image, to: "posts#destroy_image"
+    end
     resources :reactions, only: %i[create] do
       collection do
         delete :destroy
