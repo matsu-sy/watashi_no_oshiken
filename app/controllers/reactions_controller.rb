@@ -8,6 +8,16 @@ class ReactionsController < ApplicationController
       post: @post,
       reaction_type: @reaction_type
     )
+
+    if current_user != @post.user &&
+       current_user.hometowns.exists?(prefecture_code: @post.prefecture_code)
+      Badge.find_or_create_by!(
+        user: @post.user,
+        post: @post,
+        badge_type: :star
+      )
+    end
+    
     redirect_back fallback_location: post_path(@post)
   end
 
