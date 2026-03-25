@@ -110,6 +110,8 @@ ja:
       visible: 公開
       hidden: 非公開
       hometown_empty: "登録がありません"
+      badges: "獲得したバッヂ"
+      badges_empty: "まだバッヂはありません"
       reacted_posts: リアクションした投稿
       reacted_posts_empty: "リアクションした投稿はありません"
     edit:

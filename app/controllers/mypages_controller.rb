@@ -4,6 +4,7 @@ class MypagesController < ApplicationController
   def show
     @user = current_user
     @hometowns = current_user.hometowns
+    @badges = current_user.badges.includes(:post)
 
     reacted_ids =
       current_user.reactions
