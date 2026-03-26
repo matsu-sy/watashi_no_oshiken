@@ -76,6 +76,7 @@ ja:
     show:
       title: 投稿の詳細
       edit: 編集
+      star_description: "スターは、その県を出身地に設定したユーザーがリアクションした投稿に付きます。"
       back_to_list: 一覧に戻る
     edit:
       title: 投稿の編集
