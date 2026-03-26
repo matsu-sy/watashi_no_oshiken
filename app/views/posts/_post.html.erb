@@ -31,6 +31,9 @@
     <%= link_to post_path(post), class: "block" do %>
       <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
         <div class="flex items-center gap-1.5 text-[#5F7F69]">
+          <% if post.badges.any? %>
+            <%= render "shared/icon", name: "star", icon_class: "h-4 w-4 text-amber-500 shrink-0" %>
+          <% end %>
           <span class="text-sm font-bold tracking-tight"><%= post.prefecture_name %></span>
 
           <span class="text-[10px] text-slate-500">の</span>

@@ -6,6 +6,7 @@ class Post < ApplicationRecord
 
   has_many :reactions, dependent: :destroy
   has_many :reacting_users, through: :reactions, source: :user
+  has_many :badges
 
   has_one_attached :image
 

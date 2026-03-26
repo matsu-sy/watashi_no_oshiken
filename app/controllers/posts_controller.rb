@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authorize_post!, only: %i[edit update destroy destroy_image]
 
   def index
-    base = Post.includes(:user, :category, :reactions).order(created_at: :desc)
+    base = Post.includes(:user, :category, :reactions, :badges).order(created_at: :desc)
 
     # 未ログインは常に all
     unless user_signed_in?
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:user, :category, :reactions).find(params[:id])
+    @post = Post.includes(:user, :category, :reactions, :badges).find(params[:id])
   end
 
   def edit

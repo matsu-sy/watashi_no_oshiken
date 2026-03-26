@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :reactions, dependent: :destroy
   has_many :reacted_posts, through: :reactions, source: :post
   has_many :hometowns, dependent: :destroy
+  has_many :badges
 
   has_one_attached :avatar
 
