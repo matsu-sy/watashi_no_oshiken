@@ -8,6 +8,6 @@ class CreateBadges < ActiveRecord::Migration[7.2]
       t.timestamps
     end
 
-    add_index :badges, [:user_id, :post_id, :badge_type], unique: true, name: 'index_badges_on_user_post_type'
+    add_index :badges, [ :user_id, :post_id, :badge_type ], unique: true, name: 'index_badges_on_user_post_type'
   end
 end

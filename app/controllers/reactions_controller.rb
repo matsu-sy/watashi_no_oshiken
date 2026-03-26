@@ -17,7 +17,7 @@ class ReactionsController < ApplicationController
         badge_type: :star
       )
     end
-    
+
     redirect_back fallback_location: post_path(@post)
   end
 
