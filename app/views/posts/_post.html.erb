@@ -41,7 +41,9 @@
           <span class="text-xs font-medium text-slate-500"><%= post.category.name %></span>
         </div>
 
-        <span class="text-slate-300 text-sm" aria-hidden="true">›</span>
+        <%= render "shared/icon",
+          name: "circle-arrow-right",
+          icon_class: "ml-3 h-7 w-7 shrink-0 text-[#92B099] transition group-hover:text-[#5F7F69]" %>
       </div>
     <% end %>
   </div>
