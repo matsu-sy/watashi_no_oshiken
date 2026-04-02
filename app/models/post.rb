@@ -45,12 +45,12 @@ class Post < ApplicationRecord
 
   def image_index
     return unless image.attached?
-    image.variant(resize_to_limit: [ 600, 200 ]).processed
+    image.variant(resize_to_limit: [ 600, 200 ])
   end
 
   def image_show
     return unless image.attached?
-    image.variant(resize_to_limit: [ 1200, 1200 ]).processed
+    image.variant(resize_to_limit: [ 1200, 1200 ])
   end
 
   def reject_hometown_prefecture
