@@ -1,19 +1,13 @@
-<%
-  card_height =
-    if post.image.attached? || post.place_name.present?
-      "h-[340px]"
-    else
-      "h-[300px]"
-    end
-%>
-
 <article class="relative group flex flex-col overflow-hidden rounded-2xl
                 border border-slate-200/80 bg-white
                 shadow-[0_10px_30px_rgba(15,23,42,0.05)]
                 transition hover:border-slate-300 hover:shadow-[0_14px_40px_rgba(15,23,42,0.07)]
                 hover:-translate-y-0.5">
 
-  <div class="relative">
+  <%= link_to post_path(post), class: "absolute inset-0 z-0", aria: { label: "#{post.prefecture_name}の#{post.category.name}の詳細を見る" } do %>
+  <% end %>
+
+  <div class="relative z-10">
     <% unless user_signed_in? %>
       <!-- カード全体ホバーで表示 -->
       <div class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full z-20 mt-2
@@ -27,31 +21,27 @@
       </div>
     <% end %>
 
-    <!-- 県 / カテゴリ (詳細画面へリンク) -->
-    <%= link_to post_path(post), class: "block" do %>
-      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-        <div class="flex items-center gap-1.5 text-[#5F7F69]">
-          <% if post.badges.any? %>
-            <%= render "shared/icon", name: "star", icon_class: "h-4 w-4 text-amber-500 shrink-0" %>
-          <% end %>
-          <span class="text-sm font-bold tracking-tight"><%= post.prefecture_name %></span>
-
-          <span class="text-[10px] text-slate-500">の</span>
-
-          <span class="text-xs font-medium text-slate-500"><%= post.category.name %></span>
-        </div>
-
-        <%= render "shared/icon",
-          name: "circle-arrow-right",
-          icon_class: "ml-3 h-7 w-7 shrink-0 text-[#92B099] transition group-hover:text-[#5F7F69]" %>
+    <!-- 県 / カテゴリ -->
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+      <div class="flex items-center gap-1.5 text-[#5F7F69]">
+        <% if post.badges.any? %>
+          <%= render "shared/icon", name: "star", icon_class: "h-4 w-4 text-amber-500 shrink-0" %>
+        <% end %>
+        <span class="text-sm font-bold tracking-tight"><%= post.prefecture_name %></span>
+        <span class="text-[10px] text-slate-500">の</span>
+        <span class="text-xs font-medium text-slate-500"><%= post.category.name %></span>
       </div>
-    <% end %>
+
+      <%= render "shared/icon",
+        name: "circle-arrow-right",
+        icon_class: "ml-3 h-7 w-7 shrink-0 text-[#92B099] transition group-hover:text-[#5F7F69]" %>
+    </div>
   </div>
 
   <div class="flex flex-1 flex-col gap-3 p-5">
     <!-- ユーザー -->
     <div class="flex items-center gap-3">
-      <%= link_to user_path(post.user) do %>
+      <%= link_to user_path(post.user), class: "relative z-10" do %>
         <%= render "shared/avatar", user: post.user, size_class: "h-12 w-12", variant_px: 96 %>
       <% end %>
 
@@ -97,7 +87,7 @@
     <% end %>
 
     <!-- リアクション -->
-    <div class="mt-auto border-t border-slate-100 pt-3 flex items-center justify-between">
+    <div class="relative z-10 mt-auto border-t border-slate-100 pt-3 flex items-center justify-between">
       <%= render "posts/reactions", post: post %>
       <span class="text-xs text-slate-500"><%= post.created_at.strftime("%m/%d %H:%M") %></span>
     </div>
