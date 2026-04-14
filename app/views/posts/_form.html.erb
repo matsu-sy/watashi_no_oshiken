@@ -6,7 +6,7 @@
         <%= t("posts.form.errors_title", count: post.errors.count) %>
       </p>
       <ul class="mt-2 list-disc pl-5 text-sm text-rose-700 space-y-1">
-        <% order = [:base, :prefecture_code, :category, :body, :place_name] %>
+        <% order = [:base, :prefecture_code, :category, :body, :image, :place_name] %>
         <% order.each do |attr| %>
           <% post.errors.full_messages_for(attr).each do |msg| %>
             <li><%= msg %></li>
@@ -68,7 +68,9 @@
       <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
         <div class="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
           <div class="h-10 w-10 overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 flex items-center justify-center">
-            <%= image_tag @post.image_show, class: "h-full w-full object-cover" %>
+            <% if post.image.attached? && post.image.blob&.persisted? %>
+              <%= image_tag post.image_show, class: "h-full w-full object-cover" %>
+            <% end %>
           </div>
 
           <div class="min-w-0">
@@ -90,11 +92,12 @@
     <% end %>
 
     <%= f.file_field :image,
-          accept: "image/*",
+          accept: "image/jpeg,image/png,image/webp",
           class: "block w-full rounded-xl border border-slate-200 bg-white text-sm text-slate-700
                   file:mr-3 file:rounded-lg file:border-0 file:bg-[#92B099]/40 file:px-4 file:py-2
                   file:text-sm file:font-medium file:text-[#5B5652] hover:file:bg-[#92B099]/55
                   focus:outline-none focus:ring-2 focus:ring-[#92B099]/35" %>
+    <p class="text-xs text-slate-500"><%= t("posts.form.image_requirements") %></p>
   </div>
 
   <%# 場所名 Google PlaceはMVP後 %>
