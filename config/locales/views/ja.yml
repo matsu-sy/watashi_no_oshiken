@@ -76,7 +76,7 @@ ja:
     show:
       title: 投稿の詳細
       edit: 編集
-      star_description: "あなたの投稿が地元の人にリアクションされました。"
+      star_description: "この投稿は地元の人にリアクションされました。"
       back_to_list: 一覧に戻る
     edit:
       title: 投稿の編集
