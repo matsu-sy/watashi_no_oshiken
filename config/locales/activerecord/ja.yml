@@ -4,6 +4,7 @@ ja:
       messages:
         limit_three: "は最大3つまでしか登録できません"
         taken: "はすでに存在します"
+        content_type_invalid: "は JPEG / PNG / WebP 形式でアップロードしてください"
       models:
         hometown:
           attributes:
@@ -28,6 +29,7 @@ ja:
         body: 推しポイント
         prefecture_code: 都道府県
         category: カテゴリ
+        image: 画像
         place_name: 場所名
       reaction:
         reaction_type: リアクション
