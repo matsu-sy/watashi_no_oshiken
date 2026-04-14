@@ -124,6 +124,7 @@ ja:
       name: お名前
       name_placeholder: "名前を入力してください"
       avatar: アイコン
+      avatar_requirements: "JPEG / PNG / WebP、5MB以内"
       current_avatar: 現在のアイコン
       delete_avatar: 削除
       delete_avatar_confirm: "アイコン画像を削除します。よろしいですか？"
