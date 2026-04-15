@@ -6,8 +6,10 @@
 <% ring_class = ring ? "ring-2 ring-[#92B099]/30" : "" %>
 
 <div class="<%= [size_class, "shrink-0"].join(" ") %>">
-  <% if user.avatar.attached? %>
-    <%= image_tag user.avatar_variant(variant_px),
+  <% avatar_variant = user.avatar_variant(variant_px) %>
+
+  <% if avatar_variant.present? %>
+    <%= image_tag avatar_variant,
           class: ["w-full h-full rounded-full object-cover bg-white", ring_class].join(" ") %>
   <% else %>
     <div class="<%= ["w-full h-full rounded-full bg-slate-100 flex items-center justify-center", ring_class].join(" ") %>">

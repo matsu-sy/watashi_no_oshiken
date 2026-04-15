@@ -22,6 +22,7 @@ ja:
       user:
         name: お名前
         email: メールアドレス
+        avatar: 画像
         hometown_visibility: 出身地公開設定
       category:
         name: カテゴリ名
