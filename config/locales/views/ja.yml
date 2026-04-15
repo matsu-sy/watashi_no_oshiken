@@ -93,6 +93,7 @@ ja:
       category_prompt: 選択してください
       body_placeholder: "例：路地裏のパン屋さんが美味しかった。地元の人が優しかった…など"
       image_label: 画像
+      image_requirements: "JPEG / PNG / WebP、5MB以内"
       current_image: 現在の画像
       delete_image: 画像を削除
       delete_image_confirm: 画像を削除しますか？
@@ -123,6 +124,7 @@ ja:
       name: お名前
       name_placeholder: "名前を入力してください"
       avatar: アイコン
+      avatar_requirements: "JPEG / PNG / WebP、5MB以内"
       current_avatar: 現在のアイコン
       delete_avatar: 削除
       delete_avatar_confirm: "アイコン画像を削除します。よろしいですか？"

@@ -32,19 +32,20 @@ class User < ApplicationRecord
   # 任意サイズ
   def avatar_variant(px)
     return unless avatar.attached?
-    avatar.variant(resize_to_fill: [ px, px ]).processed
+    return unless avatar.blob&.persisted?
+    avatar.variant(resize_to_fill: [ px, px ])
   end
 
   # 小さめ
   def avatar_index
     return unless avatar.attached?
-    avatar.variant(resize_to_fill: [ 96, 96 ]).processed
+    avatar.variant(resize_to_fill: [ 96, 96 ])
   end
 
   # 大きめ
   def avatar_show
     return unless avatar.attached?
-    avatar.variant(resize_to_fill: [ 240, 240 ]).processed
+    avatar.variant(resize_to_fill: [ 240, 240 ])
   end
 
   def hometowns_editable?(now: Time.current)
